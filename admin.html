@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - Full Control</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins;background:#fdf6f7;padding:16px;color:#333}
+h1{font-family:Great Vibes;font-size:38px;color:#b55a65;text-align:center;margin:10px 0 4px}
+.sub{text-align:center;font-size:11px;color:#999;letter-spacing:1px;margin-bottom:16px}
+.card{background:#fff;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 6px 24px rgba(181,90,101,.08);border:1px solid #f9e2e5}
+.card h3{font-size:13px;font-weight:600;color:#b55a65;margin-bottom:10px;letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+label{font-size:11px;font-weight:600;color:#555;margin-top:12px;display:block}
+input,textarea,select{width:100%;padding:10px 12px;border:1px solid #f0c9ce;border-radius:9px;margin-top:4px;font-size:13px;font-family:Poppins;background:#fffafb}
+textarea{resize:vertical;min-height:70px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{width:100%;padding:14px;background:linear-gradient(135deg,#b55a65,#d48a94);color:#fff;border:none;border-radius:12px;font-weight:600;font-size:14px;margin-top:16px;cursor:pointer;box-shadow:0 8px 20px rgba(181,90,101,.25)}
+.btn2{padding:8px 12px;background:#fff;border:1px solid #f0c9ce;color:#b55a65;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;margin-top:6px}
+.small{font-size:10px;color:#888;margin-top:6px;line-height:1.4}
+.item{border:1px dashed #f0c9ce;padding:10px;border-radius:10px;margin-top:8px;background:#fffafb;position:relative}
+.del{position:absolute;right:8px;top:8px;background:#fff0f1;border:1px solid #f0c9ce;color:#b55a65;border-radius:6px;font-size:10px;padding:3px 8px;cursor:pointer}
+.success{background:#e6f5ea;color:#2e7d32;padding:10px;border-radius:10px;font-size:12px;text-align:center;margin-top:10px;display:none}
+</style>
+</head>
+<body>
+
+<h1>Admin Panel</h1>
+<div class="sub">VEER & ZARA • FULL CONTROL • VIDEO SAME INTERFACE</div>
+
+<!-- 1. COUPLE INFO -->
+<div class="card">
+<h3>💑 Couple Info</h3>
+<div class="row">
+<div><label>Groom Name</label><input id="groom" value="Veer"></div>
+<div><label>Bride Name</label><input id="bride" value="Zara"></div>
+</div>
+<label>Parents Line (Hero me)</label><input id="parents" value="Son of Mr. Ahmed & Mrs. Aliya | Daughter of Mr. Abbas & Mrs. Rubina">
+<label>Intro Paragraph</label><textarea id="intro">We are honored to welcome you to Wedding ceremony of Veer & Zara, they begin their journey together in faith and love. Thank you for being part of our New Journey</textarea>
+</div>
+
+<!-- 2. IMAGES -->
+<div class="card">
+<h3>🖼️ Images</h3>
+<label>Hero Background Image URL (Forest Arch)</label><input id="heroImg" value="https://images.unsplash.com/photo-1519741497674-611481863552?w=900">
+<label>Countdown Couple Image URL</label><input id="coupleImg" value="https://images.unsplash.com/photo-1520854221256-17451ccdf07d?w=400">
+<label>Venue Image URL</label><input id="venueImg" value="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600">
+</div>
+
+<!-- 3. DATE & SCRATCH -->
+<div class="card">
+<h3>📅 Dates & Scratch</h3>
+<div class="row">
+<div><label>Scratch Reveal Date Text</label><input id="scratchDate" value="September 20, 2026"></div>
+<div><label>Countdown Target Date (YYYY-MM-DD)</label><input id="countTarget" value="2026-09-20"></div>
+</div>
+<label>Scratch Heart - Top Text</label><input id="scratchTop" value="You're Invited!">
+<label>Scratch Heart - Bottom Text</label><input id="scratchBottom" value="Our Forever Begins">
+</div>
+
+<!-- 4. TIMELINE -->
+<div class="card">
+<h3>🕐 Program Timeline (Add / Remove)</h3>
+<div id="timelineList"></div>
+<button class="btn2" onclick="addTimeline()">+ Add Event</button>
+<div class="small">Format: Title | Date - Time | Description</div>
+</div>
+
+<!-- 5. VENUE -->
+<div class="card">
+<h3>📍 Venue</h3>
+<label>Venue Name</label><input id="vName" value="The Taj Mahal Palace">
+<label>Venue Address</label><input id="vAddr" value="Apollo Bandar, Colaba, Mumbai, Maharashtra 400001">
+<label>Google Maps Link</label><input id="vMap" value="https://www.google.com/maps/search/The+Taj+Mahal+Palace+Mumbai">
+</div>
+
+<!-- 6. DRESS & PRE-WEDDING -->
+<div class="card">
+<h3>👗 Dress Code & Pre Wedding</h3>
+<label>Dress Women</label><input id="dWomen" value="Elegant formal attire in pastel or jewel tones">
+<label>Dress Men</label><input id="dMen" value="Suit or traditional formal attire">
+<div id="preList"></div>
+<button class="btn2" onclick="addPre()">+ Add Pre-Wedding Event</button>
+</div>
+
+<!-- 7. EXTRA SECTIONS -->
+<div class="card">
+<h3>🚐 Extra Sections</h3>
+<label>Transportation</label><textarea id="transport">Shuttle service will be available from city center to venue on all event days.</textarea>
+<label>Accommodation</label><textarea id="accom">Special rates available at Taj Palace - 15 min from venue. Use code WEDDING2026</textarea>
+<label>Gifts Text</label><textarea id="gifts">Your presence is the most precious gift. Your blessings & love means everything to us.</textarea>
+<label>Closing Message</label><input id="closing" value="We can't wait to celebrate with you!">
+</div>
+
+<!-- 8. SUPABASE (Optional) -->
+<div class="card">
+<h3>🔗 Supabase (Messages ke liye)</h3>
+<label>Supabase URL (optional)</label><input id="sbUrl" placeholder="https://xyz.supabase.co">
+<label>Supabase Anon Key (optional)</label><input id="sbKey" placeholder="eyJ...">
+<div class="small">Agar blank choda to messages sirf alert me ayenge. Agar Supabase lagao to messages save honge.</div>
+</div>
+
+<button class="btn" onclick="saveAll()">💾 SAVE ALL SETTINGS</button>
+<div id="msg" class="success">✅ Saved! Ab index.html kholo to auto update ho jayega!</div>
+
+<button class="btn2" style="width:100%;margin-top:10px;border-style:solid" onclick="exportJson()">Export Config JSON</button>
+<button class="btn2" style="width:100%;margin-top:8px" onclick="resetAll()">Reset Default</button>
+
+<script>
+// DEFAULT DATA
+let defaultTimeline = [
+"Guest Arrival | June 28, 2026 - 04:00 PM | Guest's presence is requested at the Reception at 7:30 PM",
+"Wedding Ceremony | June 29, 2026 - 07:30 PM | Wedding ceremony presence is requested",
+"Reception | June 30, 2026 - 07:30 PM onwards | Reception presence is requested at the Palace"
+];
+let defaultPre = [
+"Mehndi | June 27, 04:00 PM | At Groom's Home",
+"Haldi | June 28, 10:30 AM | At Groom's Home",
+"Sangeet | June 28, 08:00 PM | At The Taj Mahal Palace"
+];
+
+function addTimeline(val=""){
+ let div=document.createElement('div'); div.className='item';
+ div.innerHTML=`<input value="${val}" placeholder="Event | Date | Desc"><button class="del" onclick="this.parentElement.remove()">X</button>`;
+ document.getElementById('timelineList').appendChild(div);
+}
+function addPre(val=""){
+ let div=document.createElement('div'); div.className='item';
+ div.innerHTML=`<input value="${val}" placeholder="Name | Date Time | Location"><button class="del" onclick="this.parentElement.remove()">X</button>`;
+ document.getElementById('preList').appendChild(div);
+}
+
+function load(){
+ let saved = JSON.parse(localStorage.getItem('WOW_CONFIG_FULL')||'null');
+ if(saved){
+  groom.value=saved.groom; bride.value=saved.bride; parents.value=saved.parents; intro.value=saved.intro;
+  heroImg.value=saved.heroImg; coupleImg.value=saved.coupleImg; venueImg.value=saved.venueImg;
+  scratchDate.value=saved.scratchDate; countTarget.value=saved.countTarget; scratchTop.value=saved.scratchTop; scratchBottom.value=saved.scratchBottom;
+  vName.value=saved.vName; vAddr.value=saved.vAddr; vMap.value=saved.vMap;
+  dWomen.value=saved.dWomen; dMen.value=saved.dMen; transport.value=saved.transport; accom.value=saved.accom; gifts.value=saved.gifts; closing.value=saved.closing;
+  sbUrl.value=saved.sbUrl||''; sbKey.value=saved.sbKey||'';
+  (saved.timeline||defaultTimeline).forEach(t=>addTimeline(t));
+  (saved.pre||defaultPre).forEach(p=>addPre(p));
+ } else {
+  defaultTimeline.forEach(t=>addTimeline(t)); defaultPre.forEach(p=>addPre(p));
+ }
+}
+load();
+
+function saveAll(){
+ let tl=[]; document.querySelectorAll('#timelineList input').forEach(i=>{ if(i.value) tl.push(i.value) });
+ let pre=[]; document.querySelectorAll('#preList input').forEach(i=>{ if(i.value) pre.push(i.value) });
+ let data={
+  groom:groom.value, bride:bride.value, parents:parents.value, intro:intro.value,
+  heroImg:heroImg.value, coupleImg:coupleImg.value, venueImg:venueImg.value,
+  scratchDate:scratchDate.value, countTarget:countTarget.value, scratchTop:scratchTop.value, scratchBottom:scratchBottom.value,
+  vName:vName.value, vAddr:vAddr.value, vMap:vMap.value,
+  dWomen:dWomen.value, dMen:dMen.value, transport:transport.value, accom:accom.value, gifts:gifts.value, closing:closing.value,
+  sbUrl:sbUrl.value, sbKey:sbKey.value,
+  timeline:tl, pre:pre
+ };
+ localStorage.setItem('WOW_CONFIG_FULL', JSON.stringify(data));
+ localStorage.setItem('WOW_CONFIG', JSON.stringify(data)); // for backward compat
+ document.getElementById('msg').style.display='block';
+ setTimeout(()=>document.getElementById('msg').style.display='none',3000);
+}
+
+function exportJson(){
+ let data=localStorage.getItem('WOW_CONFIG_FULL'); 
+ let blob=new Blob([data],{type:'application/json'}); let url=URL.createObjectURL(blob);
+ let a=document.createElement('a'); a.href=url; a.download='wedding-config.json'; a.click();
+}
+function resetAll(){
+ if(confirm('Reset to default?')){ localStorage.removeItem('WOW_CONFIG_FULL'); location.reload(); }
+}
+</script>
+</body>
+  </html>
