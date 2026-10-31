@@ -4,143 +4,108 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Veer & Zara</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root{--dark:#b55a65;--bg:#fdf6f7}
+:root{--dark:#8c3b47;--pink:#e9c5c9;--gold:#c8a45a}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);font-family:'Poppins',sans-serif;overflow-x:hidden}
+body{background:#fdf6f7;font-family:'Poppins',sans-serif}
 
-/* === PHOTO SAME GATE === */
-#gate{position:fixed;inset:0;background:#e9c5c9;display:flex;align-items:center;justify-content:center;z-index:9999;transition:1s cubic-bezier(.77,0,.175,1)}
-.envelope{width:340px;height:540px;position:relative;cursor:pointer}
-.env-body{
-  position:absolute;inset:0;
-  background-color:#cda2a8;
-  background-image:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.18' fill='%23a67c82'%3E%3Cpath d='M20 20 q5 -5 10 0 q5 5 0 10 q-5 5 -10 0 q-5 -5 0 -10z M25 25 l5 -8 M25 25 l-8 5'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:180px 180px;
-  border-radius:6px;
-  box-shadow:0 20px 50px rgba(0,0,0,.2);
-  border:1px solid #c9a0a6;
-}
-.flap{
-  position:absolute;top:0;left:0;right:0;height:50%;
-  background:linear-gradient(180deg,#d6b0b6,#c9a0a8);
-  clip-path:polygon(0 0,100% 0,50% 85%);
-  z-index:3;transform-origin:top;transition:1.2s cubic-bezier(.77,0,.175,1);
-  border-bottom:1px solid #b88e94;
-}
+/* ===== GATE - PHOTO SAME ===== */
+#gate{position:fixed;inset:0;background:#e9c5c9;display:flex;align-items:center;justify-content:center;z-index:9999;transition:transform 1s cubic-bezier(.77,0,.175,1)}
+#gate.open{transform:translateY(-110%)}
+.phone{width:360px;height:740px;position:relative;border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);background:#d9aab0;cursor:pointer}
 
-/* === GOLDEN WAX SEAL - PHOTO SAME === */
-.seal{
-  position:absolute;left:50%;top:44%;
-  transform:translate(-50%,-50%);
-  width:78px;height:78px;
-  background:radial-gradient(circle at 30% 25%,#ffefb0 0%,#f3d67a 15%,#d4a84a 40%,#b88a2e 70%,#9a6e20 100%);
-  border-radius:50%;
-  z-index:5;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:
-    0 0 0 1px #a67c20,
-    0 2px 0 #8a651a,
-    0 4px 8px rgba(0,0,0,.35),
-    inset 0 2px 3px rgba(255,255,255,.8),
-    inset 0 -3px 4px rgba(0,0,0,.4);
-  transition:.7s;
-  /* melted wax edge */
-  clip-path: polygon(50% 0%, 61% 4%, 72% 2%, 82% 8%, 90% 18%, 96% 28%, 98% 40%, 100% 51%, 97% 63%, 93% 74%, 86% 84%, 76% 92%, 65% 97%, 52% 100%, 40% 96%, 28% 91%, 18% 82%, 9% 71%, 3% 58%, 0% 44%, 2% 31%, 8% 19%, 18% 8%, 30% 2%);
+/* Textured envelope - Photo jesa emboss */
+.env{position:absolute;inset:0;background-color:#d6a4ac;
+background-image:
+radial-gradient(circle at 15% 20%, rgba(255,255,255,.25) 1px, transparent 1.5px),
+radial-gradient(circle at 80% 30%, rgba(255,255,255,.2) 1px, transparent 1.5px),
+url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 50 Q35 30 45 45 Q50 60 30 50 M100 20 Q110 10 120 25 Q115 40 100 20 M160 80 Q165 60 175 75 Q170 95 160 80 M40 150 Q45 130 55 145 Q50 165 40 150 M120 140 Q125 120 135 135 Q130 155 120 140' fill='none' stroke='%23b07a82' stroke-width='.5' opacity='.35'/%3E%3C/svg%3E");
 }
-.seal-inner{
-  width:62px;height:62px;
-  border:1.5px solid #7a5a12;
-  border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;
-  line-height:1.1;
-  font-family:'Cormorant Garamond',serif;
-  font-weight:700;
-  font-size:13px;
-  color:#5c4010;
-  text-shadow:0 1px 0 rgba(255,255,255,.6);
-}
-.seal-inner b{font-size:10px;letter-spacing:1px}
-.you-are{
-  position:absolute;bottom:90px;left:0;right:0;text-align:center;
-  font-family:'Cormorant Garamond';color:#7a4a52;
-  letter-spacing:3px;font-size:11px;font-weight:600;
-}
-.you-are::before,.you-are::after{content:' ~ ';opacity:.6}
+.env:before{content:'';position:absolute;top:0;left:0;right:0;height:52%;background:linear-gradient(180deg, rgba(255,255,255,.15), transparent);border-bottom:1px solid rgba(255,255,255,.2)}
 
-#gate.open .flap{transform:rotateX(180deg)}
-#gate.open .seal{transform:translate(-50%,-50%) scale(0);opacity:0}
-.hint{position:absolute;bottom:-30px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:2px;color:#8a5a5e;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
+/* Diagonal fold - Photo jesa */
+.fold{position:absolute;bottom:0;right:0;width:100%;height:45%;background:#c9989f;clip-path:polygon(40% 0,100% 0,100% 100%,0 100%);border-top:1.5px solid rgba(255,255,255,.3);box-shadow:inset 0 8px 20px rgba(0,0,0,.08)}
 
-/* MAIN */
-#main{max-width:420px;margin:0 auto;background:#fff;display:none}
-#main.show{display:block;animation:fadeIn .8s}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.hero{height:72vh;background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.15)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=900') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;text-align:center;padding:20px}
-.hero h1{font-family:'Great Vibes';font-size:56px;line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.4)}
-.scratch-box{background:#fffafb;padding:40px 20px;text-align:center}
-.heart-wrap{position:relative;width:280px;height:260px;margin:20px auto}
-.heart-bg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#fce4e6,#f9d2d6);border:2px solid #e8a0a8;text-align:center}
-#scratchCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:pointer}
-.countdown{display:flex;gap:10px;justify-content:center;margin:20px 0}
-.cd{background:#fff;border:1px solid #f0d0d4;border-radius:12px;padding:12px 6px;min-width:62px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.04)}
-.cd b{font-size:20px;color:#b55a65;display:block}.cd span{font-size:8px;letter-spacing:1px;color:#999}
-.timeline{padding:20px 20px 10px;background:#fff} .timeline h3{font-family:'Great Vibes';font-size:26px;text-align:center;color:#b55a65;margin-bottom:16px}
-.time-item{display:flex;gap:12px;padding:14px 0;border-left:2px solid #f3d5d9;margin-left:10px;padding-left:18px;position:relative}
-.time-item::before{content:'';position:absolute;left:-7px;top:18px;width:12px;height:12px;background:#e8a0a8;border-radius:50%;border:2px solid #fff}
-.card-sec{padding:24px 20px;text-align:center;border-top:1px dashed #f0d0d4}
-.btn{display:inline-block;margin-top:12px;padding:10px 18px;background:#b55a65;color:#fff;border-radius:22px;text-decoration:none;font-size:12px;font-weight:600}
-.input{width:100%;padding:12px;border:1px solid #f0d0d4;border-radius:10px;margin-top:8px;font-size:13px}
+/* Golden Wax Seal */
+.seal{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);width:88px;height:88px;background:radial-gradient(circle at 30% 30%, #f3d68b, #c8a45a 40%, #9c7a3a 100%);border-radius:50%;box-shadow:0 4px 0 #9c7a3a, 0 8px 20px rgba(0,0,0,.3), inset 0 2px 3px rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;border:2px solid #b38f4a;z-index:10}
+.seal:after{content:'';position:absolute;inset:6px;border:1px dashed #7a5a2e;border-radius:50%;opacity:.6}
+.seal b{font-family:'Cormorant Garamond';font-size:15px;line-height:1.1;color:#4a3018;text-align:center;text-shadow:0 1px 0 rgba(255,255,255,.4)}
+
+/* YOU ARE INVITED - Bottom */
+.you{position:absolute;bottom:85px;left:0;right:0;text-align:center;z-index:5}
+.you svg{width:160px;opacity:.6}
+.you p{font-family:'Cormorant Garamond';letter-spacing:4px;font-size:11px;color:#5a2e36;margin-top:4px;font-weight:600}
+
+/* Urdu Button */
+.urdu{position:absolute;bottom:18px;left:14px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:5px 12px;border-radius:20px;font-size:11px;color:#8c3b47;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+
+/* ===== INSIDE CONTENT ===== */
+#content{padding:0;opacity:0;transition:.8s}
+#content.show{opacity:1}
+.hero{height:100vh;background:linear-gradient(180deg, #fdf6f7 0%, #f9e8ea 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:85px;position:relative;overflow:hidden}
+.hero:before{content:'❦';position:absolute;top:20px;font-size:40px;color:#e9c5c9;opacity:.6;letter-spacing:10px}
+.floral{position:absolute;width:220px;height:220px;opacity:.18;background:radial-gradient(circle, #d6a4ac 2px, transparent 2.5px);background-size:22px 22px;mask:radial-gradient(circle, black 40%, transparent 70%)}
+.floral.l{top:60px;left:-30px}.floral.r{top:60px;right:-30px;transform:scaleX(-1)}
+.orn{margin-top:15px;opacity:.5}
+.hero h4{font-family:'Cormorant Garamond';letter-spacing:5px;font-size:10px;color:#b55a65;margin-top:35px}
+.hero h1{font-family:'Great Vibes';font-size:68px;color:var(--dark);margin-top:42px;line-height:.9;text-align:center;font-weight:400}
+.hero h1 span{font-size:34px;display:block;margin:6px 0;color:#c27a85}
+.hero .parent{font-size:11px;color:#9a7a80;margin-top:18px;text-align:center;line-height:1.6}
+.count{margin-top:28px;display:flex;gap:10px}
+.count div{background:#fff;border:1px solid #f2d5d8;border-radius:12px;padding:10px 14px;text-align:center;min-width:56px;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+.count b{font-family:'Cormorant Garamond';font-size:20px;color:var(--dark);display:block}
+.count span{font-size:8px;letter-spacing:1px;color:#b18d91}
+
+/* Sections - Andar graphics */
+.section{padding:38px 18px;background:#fff;margin:12px;border-radius:22px;box-shadow:0 6px 24px rgba(0,0,0,.04);border:1px solid #f9e8ea;position:relative;overflow:hidden}
+.section:before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle, #f9e8ea 1px, transparent 1.5px);background-size:14px 14px;opacity:.8}
+.sec-title{font-family:'Great Vibes';font-size:34px;color:var(--dark);text-align:center}
+.sec-line{width:40px;height:1px;background:#e9c5c9;margin:10px auto 18px}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute"><defs><clipPath id="heartClip" clipPathUnits="objectBoundingBox"><path d="M0.5,0.9 C0.2,0.6,0,0.35,0.2,0.15 C0.32,0.02,0.5,0.08,0.5,0.2 C0.5,0.08,0.68,0.02,0.8,0.15 C1,0.35,0.8,0.6,0.5,0.9 Z"/></clipPath></defs></svg>
 
-<div id="gate" onclick="openGate()">
-  <div class="envelope">
-    <div class="env-body"></div>
-    <div class="flap"></div>
-    <div class="seal"><div class="seal-inner">Tap<br>to<br>open</div></div>
-    <div class="you-are">YOU ARE INVITED</div>
-    <div class="hint">✨ TAP THE SEAL ✨</div>
+<!-- GATE -->
+<div id="gate" onclick="openCard()">
+  <div class="phone">
+    <div class="env"></div>
+    <div class="fold"></div>
+    <div class="seal"><b>Tap<br>to<br>open</b></div>
+    <div class="you">
+      <svg viewBox="0 0 200 30"><path d="M10 15 Q50 5 100 15 Q150 25 190 15" fill="none" stroke="#6b3a42" stroke-width=".6"/><text x="100" y="28" text-anchor="middle" font-size="7" letter-spacing="3" fill="#5a2e36">✦ YOU ARE INVITED ✦</text></svg>
+    </div>
+    <div class="urdu">● Urdu</div>
   </div>
 </div>
 
-<div id="main">
-<div class="hero"><p style="font-size:11px;letter-spacing:2px;opacity:.9">WE ARE HONORED TO WELCOME YOU TO THE</p><p style="font-size:11px;opacity:.9">Wedding ceremony of</p><h1>Veer<br>&<br>Zara</h1><p style="font-size:11px;margin-top:10px;opacity:.9">Son of Mr. Ahmed & Mrs. Aliya<br>Daughter of Mr. Abbas & Mrs. Rubina</p></div>
-<div style="padding:24px 20px;text-align:center;color:#666;font-size:13px;line-height:1.6;background:#fff">We are honored to welcome you to Wedding ceremony of Veer & Zara,<br>they begin their journey together in faith and love.<br>Thank you for being part of our New Journey</div>
+<!-- CONTENT -->
+<div id="content">
+  <div class="hero">
+    <div class="floral l"></div><div class="floral r"></div>
+    <h4>WEDDING INVITATION</h4>
+    <!-- Veer Zara thora neeche - 42px margin -->
+    <h1 id="hName">Veer <span>&</span> Zara</h1>
+    <div class="parent" id="hParent">Son of Mr. Ahmed & Mrs. Aliya<br>Daughter of Mr. Abbas & Mrs. Rubina</div>
+    <div class="count" id="countdown"></div>
+    <div class="orn">❧</div>
+  </div>
 
-<div class="scratch-box">
-<div style="font-family:'Great Vibes';font-size:32px;color:#b55a65">Scratch to Reveal</div>
-<div style="font-size:11px;color:#a06a70;margin-top:4px">Reveal the special date 💖</div>
-<div class="heart-wrap" style="clip-path:url(#heartClip); -webkit-clip-path:url(#heartClip)">
-<div class="heart-bg"><div style="font-size:14px;font-weight:700;color:#8a2a3a">You're Invited!</div><div style="margin-top:6px;font-size:19px;font-weight:700;color:#6e1f2d">September 20, 2026</div><div style="font-family:'Great Vibes';margin-top:6px;font-size:20px;color:#b55a65">Our Forever Begins</div></div>
-<canvas id="scratchCanvas" width="280" height="260"></canvas>
-</div>
-<div style="font-size:11px;color:#aaa">Dil ko ungli se ragdo 💕</div>
-</div>
-
-<div style="text-align:center;padding:10px 20px 20px;background:#fff"><div style="font-family:'Great Vibes';font-size:26px;color:#b55a65">Counting Down to Forever</div><img src="https://images.unsplash.com/photo-1520854221256-17451ccdf07d?w=400" style="width:100%;border-radius:12px;margin:14px 0;max-height:220px;object-fit:cover"><div class="countdown"><div class="cd"><b id="d">89</b><span>DAYS</span></div><div class="cd"><b id="h">22</b><span>HOURS</span></div><div class="cd"><b id="m">03</b><span>MINUTES</span></div><div class="cd"><b id="s">30</b><span>SECONDS</span></div></div></div>
-<div class="timeline"><h3>Program Timeline</h3><div class="time-item"><div><b>Guest Arrival</b><br><span style="font-size:12px;color:#777">June 28 - 04:00 PM</span></div></div><div class="time-item"><div><b>Wedding Ceremony</b><br><span style="font-size:12px;color:#777">June 29 - 07:30 PM</span></div></div><div class="time-item"><div><b>Reception</b><br><span style="font-size:12px;color:#777">June 30 - 07:30 PM onwards</span></div></div></div>
-<div class="card-sec" style="background:#fff8f8"><h3 style="font-family:'Great Vibes';color:#b55a65;font-size:24px">Venue</h3><p style="font-weight:600;margin-top:8px">The Taj Mahal Palace</p><p style="font-size:12px;color:#666">Apollo Bandar, Colaba, Mumbai</p><a class="btn" href="https://maps.google.com/?q=Taj+Mahal+Palace+Mumbai" target="_blank">View on Google Maps</a></div>
-<div class="card-sec"><h3 style="font-family:'Great Vibes';color:#b55a65;font-size:26px">Send a Message</h3><input class="input" placeholder="Your Name"><textarea class="input" style="height:80px" placeholder="Your Message..."></textarea><button class="btn" style="width:100%;border:none;margin-top:12px;padding:12px" onclick="alert('Message Sent ❤️')">Send Message</button><div style="margin-top:30px;font-family:'Great Vibes';font-size:24px;color:#b55a65">We can't wait to celebrate!<br>Veer & Zara</div></div>
+  <div class="section">
+    <div class="sec-title">Venue</div><div class="sec-line"></div>
+    <p id="vName" style="text-align:center;font-weight:600;color:#8c3b47">The Taj Mahal Palace</p>
+    <p id="vAddr" style="text-align:center;font-size:12px;color:#8a7a7d;margin-top:6px">Apollo Bandar, Colaba, Mumbai</p>
+    <a id="vMap" href="#" target="_blank" style="display:block;text-align:center;margin-top:14px;color:#b55a65;font-size:12px">View on Map →</a>
+  </div>
 </div>
 
 <script>
-function openGate(){document.getElementById('gate').classList.add('open');setTimeout(()=>{document.getElementById('gate').style.transform='translateY(-100%)';setTimeout(()=>{document.getElementById('gate').style.display='none';document.getElementById('main').classList.add('show');initScratch();},900);},1100);}
-let target=new Date('2026-09-20T00:00:00').getTime();setInterval(()=>{let diff=target-new Date().getTime();if(diff<0)return;document.getElementById('d').innerText=Math.floor(diff/86400000);document.getElementById('h').innerText=Math.floor(diff%86400000/3600000);document.getElementById('m').innerText=Math.floor(diff%3600000/60000);document.getElementById('s').innerText=Math.floor(diff%60000/1000);},1000);
-function initScratch(){
- let canvas=document.getElementById('scratchCanvas'), ctx=canvas.getContext('2d');
- let grad=ctx.createLinearGradient(0,0,280,260);grad.addColorStop(0,'#8e1f3a');grad.addColorStop(0.5,'#c93a5a');grad.addColorStop(1,'#a8324e');ctx.fillStyle=grad;ctx.fillRect(0,0,280,260);
- ctx.fillStyle='rgba(255,255,255,0.45)';for(let i=0;i<600;i++){ctx.beginPath();ctx.arc(Math.random()*280,Math.random()*260,Math.random()*1.6,0,Math.PI*2);ctx.fill();}
- ctx.globalCompositeOperation='destination-out';let d=false;
- function pt(e){let r=canvas.getBoundingClientRect();let x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;let y=(e.touches?e.touches[0].clientY:e.clientY)-r.top;ctx.beginPath();ctx.arc(x/r.width*280,y/r.height*260,26,0,Math.PI*2);ctx.fill();}
- canvas.addEventListener('mousedown',()=>d=true);canvas.addEventListener('mouseup',()=>d=false);canvas.addEventListener('mousemove',e=>{if(d)pt(e)});
- canvas.addEventListener('touchstart',()=>d=true,{passive:true});canvas.addEventListener('touchend',()=>d=false);canvas.addEventListener('touchmove',e=>{if(d){e.preventDefault();pt(e);}},{passive:false});
-}
+function openCard(){document.getElementById('gate').classList.add('open');setTimeout(()=>{document.getElementById('content').classList.add('show')},600); window.scrollTo(0,0)}
+// Countdown
+let wedding = new Date('2026-09-20'); let savedData = JSON.parse(localStorage.getItem('WOW_FINAL_V2')||'{}'); if(savedData.wDate) wedding=new Date(savedData.wDate);
+function tick(){let now=new Date();let d=wedding-now;if(d<0)d=0;let days=Math.floor(d/86400000);let hrs=Math.floor(d%86400000/3600000);let mins=Math.floor(d%3600000/60000);let secs=Math.floor(d%60000/1000);document.getElementById('countdown').innerHTML=`<div><b>${days}</b><span>DAYS</span></div><div><b>${hrs}</b><span>HRS</span></div><div><b>${mins}</b><span>MINS</span></div><div><b>${secs}</b><span>SECS</span></div>`}setInterval(tick,1000);tick();
+// Admin data load
+if(savedData.groom){document.getElementById('hName').innerHTML=`${savedData.groom} <span>&</span> ${savedData.bride}`; document.getElementById('hParent').innerHTML=`${savedData.gP}<br>${savedData.bP}`; document.getElementById('vName').innerText=savedData.vN; document.getElementById('vAddr').innerText=savedData.vA; document.getElementById('vMap').href=savedData.vM}
 </script>
 </body>
 </html>
