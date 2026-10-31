@@ -3,185 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Veer & Zara</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<title>Veer & Zara - Luxury Wedding</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;overflow:hidden;background:#ece9e6;font-family:'Poppins',sans-serif}
-
-#gate{
- position:fixed;inset:0;z-index:9999;
- background:radial-gradient(ellipse at center, #f3efeb 0%, #e8e3de 100%);
- display:flex;align-items:center;justify-content:center;
- perspective:1600px;
-}
-#gate.hide{transform:translateY(-130%);transition:1.2s cubic-bezier(.77,0,.175,1)}
-
-.invitation{
- width:335px;height:505px;position:relative;
- transform-style:preserve-3d;
-}
-
-/* Pink body - tumhari image */
-.body{
- position:absolute;inset:0;border-radius:14px;overflow:hidden;
- box-shadow:0 20px 60px rgba(60,20,25,.3);z-index:1;
-}
-.body img{width:100%;height:100%;object-fit:cover}
-
-/* Top Flap - jo open hoga video ki tarah */
-.flap{
- position:absolute;top:0;left:0;width:100%;height:48%;z-index:4;
- transform-origin:top center;transform-style:preserve-3d;
- transition:transform 1.1s cubic-bezier(.77,0,.175,1);
-}
-.flap::before{
- content:'';position:absolute;inset:0;
- background: #d8a8ae;
- background-image:url('envelope.jpg');
- background-size:cover;background-position:top;
- clip-path:polygon(0 0, 100% 0, 50% 78%);
- box-shadow:0 8px 20px rgba(0,0,0,.15);
-}
-#gate.opening .flap{transform:rotateX(-180deg)}
-
-/* Dark inside after flap open */
-.inside-shadow{
- position:absolute;top:15%;left:5%;right:5%;bottom:25%;z-index:2;
- background:radial-gradient(ellipse at center, #3a1a20 0%, #1a0a0d 70%);
- border-radius:8px;opacity:0;transition:opacity .6s .3s;
-}
-#gate.opening .inside-shadow{opacity:1}
-
-/* WHITE LUXURY LIGHT - VIDEO JESI */
-.white-light{
- position:absolute;left:50%;top:42%;width:8px;height:8px;z-index:3;
- background:radial-gradient(circle, #fff 0%, #fffbe6 15%, #ffeaa0 35%, rgba(255,255,255,0) 70%);
- border-radius:50%;transform:translate(-50%,-50%) scale(0);opacity:0;
- box-shadow:0 0 20px 10px rgba(255,255,255,.95), 0 0 60px 30px rgba(255,240,180,.8), 0 0 120px 60px rgba(200,164,90,.5);
-}
-#gate.opening .white-light{animation:lightVideo 2.2s cubic-bezier(.16,1,.3,1) .5s forwards}
-@keyframes lightVideo{
- 0%{transform:translate(-50%,-50%) scale(0);opacity:0}
- 20%{opacity:1}
- 40%{transform:translate(-50%,-50%) scale(2.5);opacity:1}
- 75%{transform:translate(-50%,-50%) scale(6);opacity:.9}
- 100%{transform:translate(-50%,-50%) scale(10);opacity:.6}
-}
-
-/* Rays */
-.ray{
- position:absolute;left:50%;top:42%;width:1px;height:0;background:linear-gradient(to bottom, rgba(255,255,255,.9), transparent);
- z-index:3;transform-origin:top center;opacity:0;
-}
-#gate.opening .ray{animation:rayAnim 1.8s ease-out .7s forwards}
-@keyframes rayAnim{
- 0%{height:0;opacity:0}
- 30%{height:220px;opacity:.9}
- 100%{height:340px;opacity:0}
-}
-
-/* Inner white card jo bahar aata hai */
-.inner-card{
- position:absolute;left:7%;right:7%;bottom:8%;height:62%;z-index:2;
- background:linear-gradient(180deg, #fff 0%, #fff8f9 100%);
- border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.2);
- display:flex;flex-direction:column;align-items:center;justify-content:center;
- transform:translateY(65%);transition:transform 1.4s cubic-bezier(.16,1,.3,1) .9s;
-}
-#gate.opening .inner-card{transform:translateY(-4%)}
-.inner-card h2{font-family:'Great Vibes';font-size:28px;color:#7a2e3a}
-.inner-card p{font-size:8px;letter-spacing:2px;color:#c8a45a;margin-top:4px}
-
-/* Seal */
-.seal{
- position:absolute;left:50%;top:41%;transform:translate(-50%,-50%);z-index:8;
- width:72px;height:72px;border-radius:50%;cursor:pointer;
- background:radial-gradient(circle at 35% 30%, #f0d08a, #b8860b 40%, #7a5a1e);
- box-shadow:0 6px 18px rgba(0,0,0,.4), inset 0 2px 3px rgba(255,255,255,.5);
- display:flex;align-items:center;justify-content:center;
- transition:.2s;
-}
-.seal::after{content:'🌹';font-size:26px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))}
-.seal:active{transform:translate(-50%,-50%) scale(.92)}
-#gate.opening .seal{animation:sealBreak .6s cubic-bezier(.77,0,.175,1) forwards}
-@keyframes sealBreak{
- 0%{transform:translate(-50%,-50%) scale(1)}
- 30%{transform:translate(-50%,-50%) scale(1.25) rotate(-10deg)}
- 100%{transform:translate(-50%,-50%) scale(0) rotate(180deg);opacity:0}
-}
-
-.tap-hint{
- position:absolute;bottom:14%;left:50%;transform:translateX(-50%);z-index:9;
- background:rgba(50,35,38,.85);backdrop-filter:blur(8px);
- color:#fff;padding:10px 22px;border-radius:28px;font-size:10px;letter-spacing:1.5px;
- box-shadow:0 6px 18px rgba(0,0,0,.3);animation:float 2s infinite;
- transition:.6s;
-}
-@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
-#gate.opening .tap-hint{opacity:0}
-
-/* Main Content after open */
-#main{max-width:440px;margin:0 auto;background:#fff;display:none;height:100vh;overflow-y:auto}
-#main.show{display:block;animation:fade .8s ease}
-@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.hero{height:84vh;background:linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=800') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;color:white;text-align:center;padding:0 20px 80px}
-.hero h1{font-family:'Great Vibes';font-size:68px;line-height:.85;margin-top:50px}
+/* ===================== 50K PRO CODE - PART 1 ===================== */
+:root{--dark:#5e1f2b;--gold:#c8a45a;--pink:#e9a0a8;--light:#fdf6f7;--text:#6d4a4e}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden;background:#ece7e2;font-family:'Poppins',sans-serif;scroll-behavior:smooth}
+/* GATE */
+#gate{position:fixed;inset:0;z-index:999999;background:radial-gradient(ellipse at center,#f5f1ee 0%,#e6e1dc 55%,#d8d2cc 100%);display:flex;align-items:center;justify-content:center;perspective:2000px;will-change:transform}
+#gate.out{transform:translateY(-150%);transition:transform 1.3s cubic-bezier(.77,0,.175,1)}
+.envelope-master{width:358px;height:540px;position:relative;transform-style:preserve-3d;filter:drop-shadow(0 25px 50px rgba(60,20,25,.25))}
+.env-base-layer{position:absolute;inset:0;border-radius:18px;overflow:hidden;z-index:1;background:#d9a0a8;box-shadow:0 20px 60px rgba(0,0,0,.22),inset 0 0 0 1px rgba(255,255,255,.4)}
+.env-base-layer img{width:100%;height:100%;object-fit:cover;display:block}
+.env-flap-layer{position:absolute;top:0;left:0;width:100%;height:44%;z-index:6;transform-origin:top center;transform-style:preserve-3d;transition:transform 1.15s cubic-bezier(.77,0,.175,1);will-change:transform}
+.env-flap-layer::before{content:'';position:absolute;inset:0;background-image:url('envelope.jpg');background-size:cover;background-position:top;clip-path:polygon(0 0,100% 0,50% 78%);box-shadow:0 12px 30px rgba(0,0,0,.18);border-radius:18px 18px 0 0}
+#gate.opening .env-flap-layer{transform:rotateX(-188deg) translateZ(10px)}
+.env-dark-inside{position:absolute;top:10%;left:3.5%;right:3.5%;bottom:6%;z-index:2;background:radial-gradient(ellipse at center,#2b1518 0%,#120a0c 65%);border-radius:12px;opacity:0;transition:opacity .6s .35s}
+#gate.opening .env-dark-inside{opacity:1}
+/* WHITE LIGHT - VIDEO JESI SLOW MOTION LUXURY */
+.wow-white-light{position:absolute;left:50%;top:40%;width:14px;height:14px;z-index:4;background:radial-gradient(circle,rgba(255,255,255,1) 0%,rgba(255,254,240,1) 18%,rgba(255,240,180,1) 38%,rgba(255,220,120,0) 72%);border-radius:50%;transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none;box-shadow:0 0 30px 15px rgba(255,255,255,.98),0 0 80px 40px rgba(255,240,180,.85),0 0 160px 90px rgba(200,164,90,.55)}
+#gate.opening .wow-white-light{animation:videoWhiteLight 2.8s cubic-bezier(.16,1,.3,1) .65s forwards}
+@keyframes videoWhiteLight{0%{transform:translate(-50%,-50%) scale(0);opacity:0;filter:blur(1px)}18%{opacity:1;filter:blur(2px)}38%{transform:translate(-50%,-50%) scale(3.2);opacity:1;filter:blur(3px)}68%{transform:translate(-50%,-50%) scale(9);opacity:.95;filter:blur(8px)}100%{transform:translate(-50%,-50%) scale(24);opacity:1;filter:blur(14px)}}
+.light-ray-v{position:absolute;left:50%;top:40%;width:1.5px;height:0;z-index:4;background:linear-gradient(to bottom,rgba(255,255,255,.95),transparent);transform-origin:top center;opacity:0;pointer-events:none}
+#gate.opening .light-ray-v{animation:rayVideo 2s ease-out .9s forwards}
+@keyframes rayVideo{0%{height:0;opacity:0}35%{height:260px;opacity:.85}100%{height:420px;opacity:0}}
+.env-inner-card{position:absolute;left:6%;right:6%;bottom:7%;height:62%;z-index:3;background:linear-gradient(180deg,#fff 0%,#fff9fa 100%);border-radius:14px;box-shadow:0 15px 45px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateY(70%);transition:transform 1.5s cubic-bezier(.16,1,.3,1) 1.05s;will-change:transform;border:1px solid rgba(200,164,90,.18)}
+#gate.opening .env-inner-card{transform:translateY(-3%)}
+.seal-gold{position:absolute;left:50%;top:39%;transform:translate(-50%,-50%);z-index:12;width:78px;height:78px;border-radius:50%;cursor:pointer;background:radial-gradient(circle at 32% 28%,#ffeeb0 0%,#d8b24a 28%,#a67c1e 58%,#7a5a12 100%);box-shadow:0 10px 26px rgba(0,0,0,.38),inset 0 2.5px 3px rgba(255,255,255,.7),inset 0 -2px 3px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;transition:transform .18s}
+.seal-gold:active{transform:translate(-50%,-50%) scale(.9)}
+.seal-gold::before{content:'❦';font-size:30px;color:#4a320a;text-shadow:0 1px 1px rgba(255,255,255,.6)}
+#gate.opening .seal-gold{animation:sealBreakVideo .65s cubic-bezier(.77,0,.175,1) forwards}
+@keyframes sealBreakVideo{0%{transform:translate(-50%,-50%) scale(1)}30%{transform:translate(-50%,-50%) scale(1.28) rotate(-12deg)}100%{transform:translate(-50%,-50%) scale(0) rotate(140deg);opacity:0}}
+.tap-text{position:absolute;bottom:14%;left:50%;transform:translateX(-50%);z-index:13;background:rgba(35,22,24,.88);backdrop-filter:blur(10px);color:#fff;padding:11px 24px;border-radius:30px;font-size:10px;letter-spacing:1.6px;font-weight:500;border:1px solid rgba(255,255,255,.12);box-shadow:0 8px 22px rgba(0,0,0,.32);animation:tapFloat 2.2s infinite;transition:.6s}
+@keyframes tapFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}#gate.opening .tap-text{opacity:0;transform:translateX(-50%) translateY(18px)}
+/* MAIN SCROLL CONTAINER */
+#main{max-width:440px;margin:0 auto;background:#fff;display:none;height:100vh;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative}
+#main.show{display:block;animation:mainFade .9s ease}
+@keyframes mainFade{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+/* HERO - FOREST ARCH JESA VIDEO ME */
+.hero-luxury{height:92vh;min-height:640px;background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.15) 35%,rgba(0,0,0,.55) 88%),url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1000') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;color:white;padding:0 24px 88px;position:relative;overflow:hidden}
+.hero-luxury::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.25) 100%);pointer-events:none}
+.hero-label{font-family:'Cormorant Garamond';font-size:11.5px;letter-spacing:1.2px;line-height:1.6;opacity:.92;font-weight:400;position:relative;z-index:1}
+.hero-names{font-family:'Great Vibes';font-size:54px;line-height:.9;margin-top:48px;text-shadow:0 4px 20px rgba(0,0,0,.5);position:relative;z-index:1}
+.hero-names span{display:block;font-size:22px;font-family:'Cormorant Garamond';margin:6px 0;font-style:italic;opacity:.9}
+.hero-scroll{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1}
+.hero-scroll .line{width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,.8),transparent)}
+.hero-scroll p{font-size:8.5px;letter-spacing:2.5px;opacity:.75}
+.content-intro{padding:28px 24px;text-align:center;background:#fff;color:var(--text);font-size:13px;line-height:1.85;font-family:'Cormorant Garamond';font-weight:400}
+.divider-lux{width:100%;height:28px;display:flex;align-items:center;justify-content:center;gap:14px;color:var(--pink);font-size:14px;margin:10px 0}
+.divider-lux::before,.divider-lux::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,#e8a0a8,transparent)}
 </style>
 </head>
 <body>
-
-<div id="gate" onclick="startOpen()">
-<div class="invitation" id="inv">
-<div class="body"><img src="envelope.jpg"></div>
-<div class="inside-shadow"></div>
-<div class="white-light"></div>
-<div class="ray" style="transform:translateX(-50%) rotate(0deg)"></div>
-<div class="ray" style="transform:translateX(-50%) rotate(22deg)"></div>
-<div class="ray" style="transform:translateX(-50%) rotate(-22deg)"></div>
-<div class="ray" style="transform:translateX(-50%) rotate(45deg)"></div>
-<div class="ray" style="transform:translateX(-50%) rotate(-45deg)"></div>
-
-<div class="flap" id="flap"></div>
-
-<div class="inner-card">
-<h2>Veer & Zara</h2>
-<p>YOU'RE INVITED</p>
-</div>
-
-<div class="seal" id="seal"></div>
-<div class="tap-hint">✦ TAP SEAL TO OPEN ✦</div>
+<div id="gate" onclick="startLuxuryOpen()">
+<div class="envelope-master">
+<div class="env-base-layer"><img src="envelope.jpg" alt="Envelope"></div>
+<div class="env-dark-inside"></div>
+<div class="wow-white-light" id="mainLight"></div>
+<div class="light-ray-v" style="transform:translateX(-50%) rotate(0deg)"></div>
+<div class="light-ray-v" style="transform:translateX(-50%) rotate(24deg)"></div>
+<div class="light-ray-v" style="transform:translateX(-50%) rotate(-24deg)"></div>
+<div class="light-ray-v" style="transform:translateX(-50%) rotate(48deg)"></div>
+<div class="light-ray-v" style="transform:translateX(-50%) rotate(-48deg)"></div>
+<div class="env-flap-layer" id="flapLayer"></div>
+<div class="env-inner-card"><h2 style="font-family:'Great Vibes';font-size:30px;color:var(--dark)">Veer & Zara</h2><p style="font-size:8px;letter-spacing:2.2px;color:var(--gold);margin-top:5px">YOU'RE INVITED</p></div>
+<div class="seal-gold" id="sealGold"></div>
+<div class="tap-text">✦ TAP SEAL TO OPEN ✦</div>
 </div>
 </div>
-
 <div id="main">
-<div class="hero">
-<p style="font-size:10px;letter-spacing:2px">WE ARE HONORED TO WELCOME YOU TO THE<br>Wedding ceremony of</p>
-<h1>Veer<br>&<br>Zara</h1>
+<div class="hero-luxury" id="heroLuxury">
+<p class="hero-label">We are honored to welcome you to the<br>Wedding ceremony of</p>
+<div class="hero-names">
+<span style="font-size:11px;font-family:'Poppins';letter-spacing:2px;opacity:.8">SON OF MR. AHMED & MRS. ALIYA</span>
+Veer
+<span>&</span>
+Zara
+<span style="font-size:11px;font-family:'Poppins';letter-spacing:2px;opacity:.8">DAUGHTER OF MR. ABBAS & MRS. RUBINA</span>
 </div>
-<div style="padding:28px;text-align:center;color:#5a3a40;line-height:1.8;font-size:13px">
-❦<br>We are honored to welcome you to Wedding ceremony of Veer & Zara<br>❦
-<div style="margin-top:30px"><a href="#" style="background:#8c3b47;color:#fff;padding:12px 28px;border-radius:24px;text-decoration:none;font-size:12px">View Invitation</a></div>
+<div class="hero-scroll"><p>SCROLL</p><div class="line"></div></div>
+</div>
+<div class="content-intro">
+<div class="divider-lux">❦</div>
+<span id="introText">We are honored to welcome you to Wedding ceremony of Veer & Zara, they begin their journey together in faith and love. We thank you for being part of this joyous occasion. Your presence is a cherished gift.</span>
+<div class="divider-lux">❦</div>
+</div>
+<div class="scratch-luxury" style="background:#fffafb;padding:28px 20px;text-align:center;border-top:1px solid #f8e8ea;border-bottom:1px solid #f8e8ea">
+<div style="font-family:'Great Vibes';font-size:36px;color:var(--dark)">Scratch to Reveal</div>
+<p style="font-size:11px;color:#a07a7e;margin-top:4px;letter-spacing:.8px">Reveal the special date 💖</p>
+<div style="position:relative;width:310px;height:290px;margin:20px auto;border-radius:22px;overflow:hidden;box-shadow:0 15px 40px rgba(180,80,90,.18),0 0 0 1px rgba(255,255,255,.6)" id="heartWrap">
+<div style="width:100%;height:100%;background:linear-gradient(135deg,#fde8ea 0%,#f9cbd1 55%,#f7b2bb 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px">
+<div style="font-size:11px;letter-spacing:2px;color:#7a2e3a;font-weight:600">YOU'RE INVITED!</div>
+<div style="font-size:22px;font-weight:700;color:#5a1f2b;margin-top:10px;font-family:'Cormorant Garamond'" id="scratchDate">September 20, 2026</div>
+<div style="font-family:'Great Vibes';font-size:22px;color:var(--dark);margin-top:8px">Our Forever Begins</div>
+<div style="margin-top:14px;width:42px;height:1px;background:var(--pink)"></div>
+</div>
+<canvas id="scratchCanvas" width="310" height="290" style="position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab"></canvas>
+</div>
+</div>
+
+<div style="text-align:center;padding:20px 20px 24px;background:#fff">
+<div style="font-family:'Great Vibes';font-size:30px;color:var(--dark)">Counting Down to Forever</div>
+<div style="display:flex;gap:10px;justify-content:center;margin:18px 0 6px">
+<div class="cd" style="background:#fff;border:1.5px solid #f3d5d9;border-radius:16px;padding:14px 8px;min-width:72px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.05)"><b id="d" style="font-size:22px;color:var(--dark);display:block">89</b><span style="font-size:8px;letter-spacing:1.2px;color:#999">DAYS</span></div>
+<div class="cd" style="background:#fff;border:1.5px solid #f3d5d9;border-radius:16px;padding:14px 8px;min-width:72px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.05)"><b id="h" style="font-size:22px;color:var(--dark);display:block">22</b><span style="font-size:8px;letter-spacing:1.2px;color:#999">HOURS</span></div>
+<div class="cd" style="background:#fff;border:1.5px solid #f3d5d9;border-radius:16px;padding:14px 8px;min-width:72px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.05)"><b id="m" style="font-size:22px;color:var(--dark);display:block">03</b><span style="font-size:8px;letter-spacing:1.2px;color:#999">MINUTES</span></div>
+<div class="cd" style="background:#fff;border:1.5px solid #f3d5d9;border-radius:16px;padding:14px 8px;min-width:72px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.05)"><b id="s" style="font-size:22px;color:var(--dark);display:block">30</b><span style="font-size:8px;letter-spacing:1.2px;color:#999">SECONDS</span></div>
+</div>
+<div style="margin-top:18px;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.12)"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" style="width:100%;height:200px;object-fit:cover;display:block"></div>
+</div>
+
+<div class="timeline-luxury" style="padding:26px 22px;background:#fff;border-top:1px solid #f8e8ea">
+<h3 style="font-family:'Great Vibes';font-size:28px;text-align:center;color:var(--dark);margin-bottom:18px">Program Timeline</h3>
+<div class="time-row" style="display:flex;gap:14px;padding:16px 0;border-left:2px solid #f3d5d9;margin-left:10px;padding-left:20px;position:relative"><div style="position:absolute;left:-7px;top:22px;width:12px;height:12px;background:#e8a0a8;border-radius:50%;border:2px solid #fff"></div><div><b style="font-size:13px;color:var(--dark)">Guest Arrival</b><br><span style="font-size:11px;color:#777">The beginning of celebration</span><br><span style="font-size:10px;color:#999;background:#fdf2f3;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block">Sat, Sep 20, 2026, 06:30 PM</span></div></div>
+<div class="time-row" style="display:flex;gap:14px;padding:16px 0;border-left:2px solid #f3d5d9;margin-left:10px;padding-left:20px;position:relative"><div style="position:absolute;left:-7px;top:22px;width:12px;height:12px;background:#e8a0a8;border-radius:50%;border:2px solid #fff"></div><div><b style="font-size:13px;color:var(--dark)">Wedding Ceremony</b><br><span style="font-size:11px;color:#777">Sacred vows under the stars</span><br><span style="font-size:10px;color:#999;background:#fdf2f3;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block">Sat, Sep 20, 2026, 07:30 PM</span></div></div>
+<div class="time-row" style="display:flex;gap:14px;padding:16px 0;border-left:2px solid #f3d5d9;margin-left:10px;padding-left:20px;position:relative"><div style="position:absolute;left:-7px;top:22px;width:12px;height:12px;background:#e8a0a8;border-radius:50%;border:2px solid #fff"></div><div><b style="font-size:13px;color:var(--dark)">Reception</b><br><span style="font-size:11px;color:#777">Reception with dinner & joy</span><br><span style="font-size:10px;color:#999;background:#fdf2f3;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block">Sat, Sep 20, 2026, 08:30 PM onwards</span></div></div>
+</div>
+
+<div class="venue-luxury" style="padding:26px 22px;background:#fffafb;text-align:center;border-top:1px solid #f8e8ea">
+<h3 style="font-family:'Great Vibes';font-size:28px;color:var(--dark)">Venue</h3>
+<p style="font-weight:700;color:var(--dark);margin-top:12px;font-size:15px">The Taj Mahal Palace</p>
+<p style="font-size:12px;color:#777;margin-top:4px">Apollo Bandar, Colaba, Mumbai, Maharashtra 400001</p>
+<a href="https://maps.google.com/?q=Taj+Mahal+Palace+Mumbai" target="_blank" style="display:inline-block;margin-top:14px;background:linear-gradient(135deg,#8c3b47,#b55a65);color:#fff;padding:11px 22px;border-radius:24px;font-size:11px;text-decoration:none;font-weight:600;box-shadow:0 6px 16px rgba(140,59,71,.3)">View on Google Maps</a>
+<div style="margin-top:22px;padding:18px;background:#fff;border-radius:16px;border:1px solid #f3d5d9;text-align:left">
+<div style="display:flex;gap:12px"><div style="width:32px;height:32px;background:#fdf2f3;border-radius:50%;display:flex;align-items:center;justify-content:center">👗</div><div><b style="font-size:12px">Women</b><br><span style="font-size:11px;color:#777">Elegant formal attire in pastel or jewel tones</span></div></div>
+<div style="display:flex;gap:12px;margin-top:14px"><div style="width:32px;height:32px;background:#f0f0f8;border-radius:50%;display:flex;align-items:center;justify-content:center">🤵</div><div><b style="font-size:12px">Men</b><br><span style="font-size:11px;color:#777">Suit or traditional formal attire</span></div></div>
+</div>
+</div>
+ <div style="padding:24px 22px;background:#fff;border-top:1px solid #f8e8ea">
+<h3 style="font-family:'Great Vibes';font-size:26px;text-align:center;color:var(--dark);margin-bottom:16px">Pre-Wedding Festivities</h3>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="background:#fff8f0;border:1px solid #f5e6d0;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:12px;color:#8a5a1e">Mehndi</b><br><span style="font-size:10px;color:#999">Fri, Sep 18, 2026, 4:00 PM at Bride's Home</span></div><span>🌿</span></div>
+<div style="background:#fffef2;border:1px solid #f0e8c0;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:12px;color:#9a8a1e">Haldi</b><br><span style="font-size:10px;color:#999">Fri, Sep 18, 2026, 10:00 AM at Groom's Home</span></div><span>💛</span></div>
+<div style="background:#f8f0ff;border:1px solid #e8d8f8;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:12px;color:#6a4a8a">Sangeet</b><br><span style="font-size:10px;color:#999">Fri, Sep 18, 2026, 8:00 PM at Taj Mahal Palace</span></div><span>🎶</span></div>
+</div>
+
+<div style="margin-top:26px;padding:20px;background:#fdf6f7;border-radius:16px;border:1px dashed #e8a0a8;text-align:center">
+<h4 style="font-size:13px;color:var(--dark)">Transportation</h4><p style="font-size:11px;color:#777;margin-top:6px">Shuttle service will be available from City Center to venue between 5:00 PM - 7:00 PM. Return shuttle at 11:00 PM.</p>
+<h4 style="font-size:13px;color:var(--dark);margin-top:16px">Accommodation</h4><p style="font-size:11px;color:#777;margin-top:6px">Special room rates at Taj Mahal Palace. Use code WED2026. Booking until Sep 10, 2026.</p>
+<h4 style="font-size:13px;color:var(--dark);margin-top:16px">Gifts</h4><p style="font-size:11px;color:#777;margin-top:6px">Your presence is our present! If you wish to bless us, a contribution to our honeymoon fund would be cherished.</p>
+</div>
+
+<div style="margin-top:26px;text-align:center">
+<h3 style="font-family:'Great Vibes';font-size:28px;color:var(--dark)">Send a Message</h3>
+<input id="gName" placeholder="Your Name" style="width:100%;padding:13px;border:1.5px solid #f0d0d4;border-radius:12px;margin-top:14px;background:#fdf6f7;font-size:13px">
+<input id="gEmail" placeholder="your@email.com" style="width:100%;padding:13px;border:1.5px solid #f0d0d4;border-radius:12px;margin-top:10px;background:#fdf6f7;font-size:13px">
+<textarea id="gMsg" placeholder="Write your wishes..." style="width:100%;padding:13px;border:1.5px solid #f0d0d4;border-radius:12px;margin-top:10px;background:#fdf6f7;font-size:13px;height:90px"></textarea>
+<button onclick="sendMsg()" style="width:100%;margin-top:14px;padding:13px;background:linear-gradient(135deg,#8c3b47,#b55a65);color:#fff;border:none;border-radius:24px;font-weight:600;box-shadow:0 8px 20px rgba(140,59,71,.3)">Send Message ❤️</button>
+<div style="margin-top:36px;padding:20px 0 10px;border-top:1px solid #f3d5d9">
+<div style="font-family:'Great Vibes';font-size:26px;color:var(--dark)">We can't wait to celebrate with you!</div>
+<div style="font-family:'Great Vibes';font-size:20px;color:#b55a65;margin-top:6px">Veer & Zara</div>
+<p style="font-size:9px;letter-spacing:1.5px;color:#aaa;margin-top:14px">MADE WITH LOVE • 2026</p>
+</div>
+</div>
 </div>
 </div>
 
 <script>
-let opened=false;
-function startOpen(){
- if(opened) return;
- opened=true;
- let g=document.getElementById('gate');
- g.classList.add('opening');
- if(navigator.vibrate) navigator.vibrate([50,30,80]);
+/* ===================== 50K CODE - LUXURY LOGIC ===================== */
+let luxOpened=false;
+function startLuxuryOpen(){
+ if(luxOpened) return; luxOpened=true;
+ let gate=document.getElementById('gate');
+ gate.classList.add('opening');
+ if(navigator.vibrate) navigator.vibrate([60,30,90]);
  setTimeout(()=>{
-  g.classList.add('hide');
+  gate.classList.add('out');
   setTimeout(()=>{
-   g.style.display='none';
+   gate.style.display='none';
    document.body.style.overflow='auto';
-   document.getElementById('main').classList.add('show');
-  },1000);
- },2400);
+   document.documentElement.style.overflow='auto';
+   let main=document.getElementById('main');
+   main.style.display='block';main.classList.add('show');
+   initLuxScratch();
+  },1100);
+ },2850);
 }
+// ADMIN LOAD - ?d=base64 json
+(function(){
+ try{
+  let p=new URLSearchParams(location.search);
+  let data=null;
+  if(p.has('d')) data=JSON.parse(decodeURIComponent(atob(p.get('d'))));
+  else data=JSON.parse(localStorage.getItem('WED_PRO_50K')||'null');
+  if(!data) return;
+  if(data.groom||data.bride){
+   let g=data.groom||'Veer', b=data.bride||'Zara';
+   document.querySelectorAll('.hero-names').forEach(e=>e.innerHTML=`<span style="font-size:11px;font-family:'Poppins';letter-spacing:2px;opacity:.8">SON OF MR. AHMED & MRS. ALIYA</span>${g}<span>&</span>${b}<span style="font-size:11px;font-family:'Poppins';letter-spacing:2px;opacity:.8">DAUGHTER OF MR. ABBAS & MRS. RUBINA</span>`);
+   document.getElementById('introText').innerText=`We are honored to welcome you to Wedding ceremony of ${g} & ${b}, they begin their journey together in faith and love.`;
+  }
+  if(data.date) document.getElementById('scratchDate').innerText=data.date;
+  if(data.wDate) window.WED_TARGET=new Date(data.wDate).getTime();
+ }catch(e){}
+})();
+// Countdown
+window.WED_TARGET=window.WED_TARGET||new Date('2026-09-20T19:00:00').getTime();
+setInterval(()=>{
+ let diff=window.WED_TARGET-Date.now();if(diff<0)return;
+ document.getElementById('d').innerText=Math.floor(diff/86400000).toString().padStart(2,'0');
+ document.getElementById('h').innerText=Math.floor(diff%86400000/3600000).toString().padStart(2,'0');
+ document.getElementById('m').innerText=Math.floor(diff%3600000/60000).toString().padStart(2,'0');
+ document.getElementById('s').innerText=Math.floor(diff%60000/1000).toString().padStart(2,'0');
+},1000);
+// Scratch Canvas Heart
+function initLuxScratch(){
+ let c=document.getElementById('scratchCanvas');if(!c) return;
+ let ctx=c.getContext('2d'),drawing=false;
+ let grad=ctx.createLinearGradient(0,0,310,290);
+ grad.addColorStop(0,'#b55a65');grad.addColorStop(1,'#8c3b47');
+ ctx.fillStyle=grad;ctx.fillRect(0,0,310,290);
+ ctx.fillStyle='rgba(255,255,255,.25)';ctx.font='600 11px Poppins';ctx.textAlign='center';
+ ctx.fillText('SCRATCH TO REVEAL DATE ♡',155,145);
+ ctx.globalCompositeOperation='destination-out';
+ function pos(e){let r=c.getBoundingClientRect();let cx=(e.touches?e.touches[0].clientX:e.clientX)-r.left;let cy=(e.touches?e.touches[0].clientY:e.clientY)-r.top;return {x:cx/r.width*310,y:cy/r.height*290}}
+ function draw(e){let p=pos(e);ctx.beginPath();ctx.arc(p.x,p.y,32,0,Math.PI*2);ctx.fill()}
+ c.addEventListener('mousedown',()=>drawing=true);c.addEventListener('mouseup',()=>drawing=false);
+ c.addEventListener('mousemove',e=>{if(drawing)draw(e)});
+ c.addEventListener('touchstart',()=>drawing=true,{passive:true});
+ c.addEventListener('touchend',()=>drawing=false);
+ c.addEventListener('touchmove',e=>{if(drawing){e.preventDefault();draw(e)}},{passive:false});
+}
+function sendMsg(){let n=document.getElementById('gName').value;if(!n) return alert('Name likho');alert('Thank you '+n+'! Message sent ❤️');document.getElementById('gName').value='';document.getElementById('gEmail').value='';document.getElementById('gMsg').value=''}
 </script>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                       
