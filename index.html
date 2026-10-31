@@ -2,271 +2,311 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Veer & Zara - 500 Lines Luxury</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Video Editor</title>
+
 <style>
-:root{--dark:#5e1f2b;--gold:#c8a45a;--pink:#e9a0a8;--dPink:#6d1f2b;--paper:#e8e2dc}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;height:100%;overflow:hidden;background:var(--paper);font-family:'Poppins',sans-serif}
-#gate{
- position:fixed;inset:0;z-index:99999;
- background:radial-gradient(ellipse at center,#f3eee9 0%,#e9e4e0 60%,#ddd8d3 100%);
- display:flex;align-items:center;justify-content:center;flex-direction:column;
- perspective:2200px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-#gate.out{transform:translateY(-170%);transition:1.4s cubic-bezier(.77,0,.175,1)}
-.pink-wrap{
- width:330px;height:470px;position:relative;
- display:flex;align-items:center;justify-content:center;
- filter:drop-shadow(0 22px 45px rgba(94,31,43,.18));
+
+body {
+    background: #080b0e;
+    color: white;
+    font-family: Arial, sans-serif;
 }
-.pink-img{
- width:100%;height:100%;border-radius:14px;overflow:hidden;position:relative;z-index:1;
+
+.editor {
+    width: 100%;
+    max-width: 500px;
+    height: 100dvh;
+    margin: auto;
+    background: #080b0e;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
-.pink-img img{
- width:100%;height:100%;object-fit:cover;display:block;border-radius:14px;
+
+.top {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    background: #080b0e;
+    z-index: 2;
 }
-.flap{
- position:absolute;top:0;left:0;width:100%;height:36%;z-index:4;
- transform-origin:top center;transition:1.25s cubic-bezier(.77,0,.175,1);
- background:url('envelope.jpg') top/cover;
- clip-path:polygon(0 0,100% 0,100% 60%,76% 60%,76% 32%,50% 66%,24% 32%,24% 60%,0 60%);
+
+.tool {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #171c20;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    cursor: pointer;
 }
-#gate.opening .flap{transform:rotateX(-182deg) translateZ(4px)}
-.single-seal{
- position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);
- z-index:6;width:88px;height:88px;border-radius:50%;cursor:pointer;
- background:radial-gradient(circle at 30% 28%, #ffeeb8 0%, #e8c55a 35%, #b78a1e 58%, #7a5a12 100%);
- box-shadow:0 10px 26px rgba(0,0,0,.38), inset 0 2.5px 3px rgba(255,255,255,.8);
- display:flex;flex-direction:column;align-items:center;justify-content:center;
- border:1.5px solid rgba(255,255,255,.5);
+
+.timeline {
+    position: absolute;
+    top: 108px;
+    left: 4%;
+    width: 92%;
+    height: 48px;
+    display: flex;
+    border: 2px solid white;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 3;
 }
-.single-seal b{font-size:9px;color:#4a320a;letter-spacing:.5px;line-height:1.1;text-align:center;font-family:'Poppins';font-weight:700}
-.single-seal small{font-size:7px;color:#4a320a;letter-spacing:.3px}
-#gate.opening .single-seal{animation:sealGo .7s cubic-bezier(.77,0,.175,1) forwards}
-@keyframes sealGo{0%{transform:translate(-50%,-50%) scale(1)}30%{transform:translate(-50%,-50%) scale(1.25) rotate(-8deg)}100%{transform:translate(-50%,-50%) scale(0) rotate(180deg);opacity:0}}
-.burst{
- position:absolute;left:50%;top:54%;width:12px;height:12px;z-index:3;
- background:radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,254,240,1) 28%, rgba(255,240,180,1) 48%, transparent 78%);
- border-radius:50%;transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none;
- box-shadow:0 0 32px 16px #fff, 0 0 90px 45px rgba(255,240,180,.9), 0 0 170px 90px rgba(200,164,90,.5);
+
+.timeline img {
+    width: 10%;
+    height: 100%;
+    object-fit: cover;
+    border-right: 1px solid white;
 }
-#gate.opening .burst{animation:burstGo 3s cubic-bezier(.16,1,.3,1) .6s forwards}
-@keyframes burstGo{0%{transform:translate(-50%,-50%) scale(0);opacity:0}22%{opacity:1}50%{transform:translate(-50%,-50%) scale(5)}80%{transform:translate(-50%,-50%) scale(13);opacity:.9}100%{transform:translate(-50%,-50%) scale(24);opacity:.6}}
-.tap{margin-top:38px;z-index:8;background:linear-gradient(135deg,#2d2425,#3a2d2f);color:#fff;padding:15px 32px;border-radius:32px;font-size:11px;letter-spacing:2px;font-weight:500;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 28px rgba(0,0,0,.32);animation:floatTap 2.4s infinite}
-@keyframes floatTap{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-#gate.opening .tap{opacity:0;transform:translateY(18px)}
-#main{max-width:440px;margin:0 auto;background:#fff;display:none;height:100vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
-#main.show{display:block;animation:mainIn .9s cubic-bezier(.16,1,.3,1)}
-@keyframes mainIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.hero{height:94vh;min-height:700px;background:linear-gradient(to bottom, rgba(0,0,0,.06) 0%, rgba(0,0,0,.16) 42%, rgba(0,0,0,.62) 92%), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1100') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;color:white;padding:0 26px 92px}
-.hero-label{font-family:'Cormorant Garamond';font-size:12.5px;letter-spacing:1.2px;line-height:1.8;opacity:.92;z-index:1}
-.hero-names{font-family:'Great Vibes';font-size:58px;line-height:.86;margin-top:52px;text-shadow:0 6px 24px rgba(0,0,0,.5);z-index:1}
-.hero-names span{display:block;font-size:11px;font-family:'Poppins';letter-spacing:2.8px;opacity:.78;margin:12px 0;font-weight:300;text-transform:uppercase}
+
+.preview {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(140deg, #91a95c, #526b36);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caption {
+    position: absolute;
+    top: 75px;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 2px 5px black;
+}
+
+.phone {
+    width: 62%;
+    height: 65%;
+    background: #15191d;
+    border: 5px solid #16191c;
+    border-radius: 24px;
+    transform: rotate(8deg);
+    padding: 7px;
+    box-shadow: 0 8px 25px #0008;
+}
+
+.phone-screen {
+    height: 100%;
+    border-radius: 15px;
+    background: #e8bfc5;
+    color: #75504f;
+    position: relative;
+    overflow: hidden;
+}
+
+.phone-header {
+    height: 45px;
+    background: #171c24;
+    color: white;
+    padding: 14px 10px;
+    font-size: 11px;
+}
+
+.envelope {
+    margin: 30px auto;
+    width: 90%;
+    height: 65%;
+    background:
+      radial-gradient(circle, #ffffff30 1px, transparent 3px),
+      #e9c3c8;
+    background-size: 14px 14px;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+    position: relative;
+}
+
+.seal {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background: #bb8531;
+    border: 5px double #755020;
+    display: grid;
+    place-items: center;
+    color: #503314;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.phone-footer {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    margin-top: -25px;
+}
+
+.sound {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    background: #3339;
+    padding: 9px;
+    border-radius: 50%;
+}
+
+.ask {
+    margin: 12px 10px;
+    background: #1c2428;
+    border-radius: 30px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 12px;
+}
+
+.ask span {
+    font-size: 23px;
+}
+
+.ask input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+.ask input::placeholder {
+    color: white;
+}
+
+.bottom {
+    height: 75px;
+    background: #0d141a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.meta {
+    background: #151d24;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.check {
+    background: #16c76a;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: black;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+.home {
+    width: 125px;
+    height: 4px;
+    background: white;
+    border-radius: 10px;
+    margin: 7px auto;
+}
 </style>
 </head>
+
 <body>
-<div id="gate" onclick="openCard()">
-<div class="pink-wrap">
-<div class="pink-img"><img src="envelope.jpg" alt="Envelope"></div>
-<div class="flap"></div>
-<div class="burst"></div>
-<div class="single-seal"><b>Tap<br>to<br>open</b></div>
+
+<div class="editor">
+
+    <div class="top">
+        <div class="tool" onclick="alert('Close editor')">×</div>
+        <div class="tool" onclick="downloadImage()">♧</div>
+        <div class="tool">▣</div>
+        <div class="tool">Aa</div>
+        <div class="tool">✎</div>
+    </div>
+
+    <div class="timeline">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=100">
+        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=100">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=100">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100">
+        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=100">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=100">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100">
+        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=100">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=100">
+    </div>
+
+    <div class="preview">
+
+        <div class="caption">
+            Top saying "WOW!" 🤍
+        </div>
+
+        <div class="phone">
+            <div class="phone-screen">
+
+                <div class="phone-header">
+                    5:26 &nbsp;&nbsp; Veer & Zar...
+                </div>
+
+                <div class="envelope"></div>
+
+                <div class="seal">
+                    Thank<br> You
+                </div>
+
+                <div class="phone-footer">
+                    YOU ARE INVITED
+                </div>
+
+            </div>
+        </div>
+
+        <div class="sound">🔊</div>
+
+    </div>
+
+    <div class="ask">
+        <span>▧</span>
+        <input type="text" placeholder="Ask about this...">
+    </div>
+
+    <div class="bottom">
+        <div class="meta">
+            Meta AI 🔵
+        </div>
+
+        <div class="check" onclick="alert('Confirmed!')">
+            ✓
+        </div>
+    </div>
+
+    <div class="home"></div>
+
 </div>
-<div class="tap">✦ TAP SEAL TO OPEN ✦</div>
-</div>
-<div id="main">
-<div class="hero">
-<p class="hero-label">We are honored to welcome you to the<br>Wedding ceremony of</p>
-<div class="hero-names" id="hNames"><span>Son of Mr. Ahmed & Mrs. Aliya</span>Veer<span style="font-family:'Great Vibes';font-size:44px;margin:6px 0">&</span>Zara<span>Daughter of Mr. Abbas & Mrs. Rubina</span></div>
-</div>
-<div style="padding:30px 22px;text-align:center;background:#fff;color:#6d4a4e;font-family:'Cormorant Garamond';font-size:14.5px;line-height:1.95">
-<div style="display:flex;align-items:center;gap:16px;color:var(--pink);margin:12px 0"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#e8a0a8)"></div>❦<div style="flex:1;height:1px;background:linear-gradient(90deg,#e8a0a8,transparent)"></div></div>
-<span id="introText">We are honored to welcome you to Wedding ceremony of Veer & Zara, they begin their journey together in faith and love. Your presence is a cherished gift that will make our day truly unforgettable.</span>
-<div style="display:flex;align-items:center;gap:16px;color:var(--pink);margin:12px 0"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#e8a0a8)"></div>❦<div style="flex:1;height:1px;background:linear-gradient(90deg,#e8a0a8,transparent)"></div></div>
-</div>
-<div style="background:linear-gradient(180deg,#fffafb 0%,#fff5f6 100%);padding:32px 20px 30px;text-align:center;border-top:1px solid #f8e8ea;border-bottom:1px solid #f8e8ea">
-<div style="font-family:'Great Vibes';font-size:42px;color:var(--dark)">Scratch to Reveal</div>
-<p style="font-size:11.5px;color:#a07a7e;margin-top:6px;letter-spacing:.6px">Apni ungli se dil ko scratch karo 💖</p>
-<div style="position:relative;width:320px;height:320px;margin:24px auto;display:flex;align-items:center;justify-content:center">
-<svg width="0" height="0"><defs><clipPath id="heart500" clipPathUnits="objectBoundingBox"><path d="M0.5,0.88 C0.16,0.62,0,0.36,0.24,0.14 C0.34,0.04,0.5,0.19,0.5,0.19 C0.5,0.19,0.66,0.04,0.76,0.14 C1,0.36,0.84,0.62,0.5,0.88 Z"/></clipPath></defs></svg>
-<div style="position:absolute;inset:0;background:#ffffff;border-radius:26px;box-shadow:0 16px 40px rgba(94,31,43,.12),0 0 0 1px rgba(0,0,0,.04)"></div>
-<div style="position:absolute;inset:2.5%;background:linear-gradient(135deg,#fde8ea 0%,#f9cbd1 48%,#f7b2bb 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;clip-path:url(#heart500);z-index:1;text-align:center;padding:24px">
-<div style="font-size:10px;letter-spacing:2.4px;color:var(--dark);font-weight:700">YOU'RE INVITED!</div>
-<div style="font-size:23px;font-weight:700;color:var(--dark);margin-top:12px;font-family:'Cormorant Garamond'" id="sDate">September 20, 2026</div>
-<div style="width:32px;height:1.5px;background:var(--pink);margin:12px 0"></div>
-<div style="font-family:'Great Vibes';font-size:26px;color:var(--dark)">Our Forever Begins</div>
-<div style="margin-top:12px;font-size:18px;animation:beat 1.5s infinite">💕</div>
-</div>
-<canvas id="hCanvas" width="320" height="320" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;clip-path:url(#heart500);touch-action:none;cursor:grab;filter:drop-shadow(0 6px 16px rgba(0,0,0,.18))"></canvas>
-</div>
-<p style="font-size:9.5px;color:#b08a8e;letter-spacing:1.4px;margin-top:10px;font-weight:500">✦ USE YOUR FINGER TO SCRATCH THE HEART ✦</p>
-</div>
-<div style="text-align:center;padding:28px 20px 24px;background:#fff">
-<div style="font-family:'Great Vibes';font-size:34px;color:var(--dark)">Counting Down to Forever</div>
-<p style="font-size:10px;letter-spacing:1.5px;color:#b08a8e;margin-top:4px">EVERY SECOND BRINGS US CLOSER</p>
-<div style="display:flex;gap:10px;justify-content:center;margin:22px 0 12px">
-<div style="background:#fff;border:1.8px solid #f3d5d9;border-radius:18px;padding:16px 8px;min-width:78px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06)"><b id="d" style="font-size:24px;color:var(--dark);display:block;font-weight:700">00</b><span style="font-size:8px;letter-spacing:1.4px;color:#999;font-weight:600">DAYS</span></div>
-<div style="background:#fff;border:1.8px solid #f3d5d9;border-radius:18px;padding:16px 8px;min-width:78px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06)"><b id="h" style="font-size:24px;color:var(--dark);display:block;font-weight:700">00</b><span style="font-size:8px;letter-spacing:1.4px;color:#999;font-weight:600">HOURS</span></div>
-<div style="background:#fff;border:1.8px solid #f3d5d9;border-radius:18px;padding:16px 8px;min-width:78px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06)"><b id="m" style="font-size:24px;color:var(--dark);display:block;font-weight:700">00</b><span style="font-size:8px;letter-spacing:1.4px;color:#999;font-weight:600">MINUTES</span></div>
-<div style="background:#fff;border:1.8px solid #f3d5d9;border-radius:18px;padding:16px 8px;min-width:78px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06)"><b id="s" style="font-size:24px;color:var(--dark);display:block;font-weight:700">00</b><span style="font-size:8px;letter-spacing:1.4px;color:#999;font-weight:600">SECONDS</span></div>
-</div>
-<div style="margin-top:22px;border-radius:22px;overflow:hidden;box-shadow:0 14px 36px rgba(0,0,0,.14)"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900" style="width:100%;height:220px;object-fit:cover;display:block"></div>
-</div>
-<style>@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}</style>
-<div style="padding:30px 22px;background:#fff;border-top:1px solid #f8e8ea">
-<h3 style="font-family:'Great Vibes';font-size:32px;text-align:center;color:var(--dark)">Program Timeline</h3>
-<p style="text-align:center;font-size:10px;letter-spacing:2.5px;color:#b08a8e;margin-top:2px">A DAY TO REMEMBER FOREVER</p>
-<div style="margin-top:26px;position:relative">
-<div style="position:absolute;left:17px;top:0;bottom:0;width:2.5px;background:linear-gradient(to bottom, #f3d5d9, #e8a0a8)"></div>
-<div style="display:flex;gap:16px;padding:18px 0 18px 42px;position:relative">
-<div style="position:absolute;left:8px;top:22px;width:18px;height:18px;background:linear-gradient(135deg,#e8a0a8,#c87a82);border-radius:50%;border:4px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.18);z-index:1"></div>
-<div style="flex:1;background:#fffafb;border:1.5px solid #f3d5d9;border-radius:16px;padding:14px 16px"><b style="font-size:13px;color:var(--dark)">Guest Arrival & Welcome Drinks 🥂</b><br><span style="font-size:11px;color:#777">The beginning of celebration with joy and laughter</span><br><span style="font-size:10px;color:#fff;background:linear-gradient(135deg,#e8a0a8,#c87a82);padding:4px 12px;border-radius:12px;margin-top:8px;display:inline-block;font-weight:600">Sat, Sep 20 • 06:30 PM</span></div>
-</div>
-<div style="display:flex;gap:16px;padding:18px 0 18px 42px;position:relative">
-<div style="position:absolute;left:8px;top:22px;width:18px;height:18px;background:linear-gradient(135deg,#e8a0a8,#c87a82);border-radius:50%;border:4px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.18);z-index:1"></div>
-<div style="flex:1;background:#fffafb;border:1.5px solid #f3d5d9;border-radius:16px;padding:14px 16px"><b style="font-size:13px;color:var(--dark)">Wedding Ceremony - Nikah 💍</b><br><span style="font-size:11px;color:#777">Sacred vows under the stars, together forever</span><br><span style="font-size:10px;color:#fff;background:linear-gradient(135deg,#e8a0a8,#c87a82);padding:4px 12px;border-radius:12px;margin-top:8px;display:inline-block;font-weight:600">Sat, Sep 20 • 07:30 PM</span></div>
-</div>
-<div style="display:flex;gap:16px;padding:18px 0 18px 42px;position:relative">
-<div style="position:absolute;left:8px;top:22px;width:18px;height:18px;background:linear-gradient(135deg,#e8a0a8,#c87a82);border-radius:50%;border:4px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.18);z-index:1"></div>
-<div style="flex:1;background:#fffafb;border:1.5px solid #f3d5d9;border-radius:16px;padding:14px 16px"><b style="font-size:13px;color:var(--dark)">Reception, Dinner & Dance 🎉</b><br><span style="font-size:11px;color:#777">Celebrate with dinner, dance, music & endless love</span><br><span style="font-size:10px;color:#fff;background:linear-gradient(135deg,#e8a0a8,#c87a82);padding:4px 12px;border-radius:12px;margin-top:8px;display:inline-block;font-weight:600">Sat, Sep 20 • 08:30 PM onwards</span></div>
-</div>
-</div>
-</div>
-<div style="padding:30px 22px;background:linear-gradient(180deg,#fffafb 0%,#fff5f6 100%);text-align:center;border-top:1px solid #f8e8ea">
-<h3 style="font-family:'Great Vibes';font-size:32px;color:var(--dark)">Venue</h3>
-<p style="font-weight:700;color:var(--dark);margin-top:14px;font-size:17px" id="vName">The Taj Mahal Palace</p>
-<p style="font-size:12.5px;color:#777;margin-top:6px;line-height:1.6" id="vAddr">Apollo Bandar, Colaba, Mumbai,<br>Maharashtra 400001, India</p>
-<a id="vMap" href="https://maps.google.com/?q=Taj+Mahal+Palace+Mumbai" target="_blank" style="display:inline-block;margin-top:18px;background:linear-gradient(135deg,#8c3b47,#b55a65);color:#fff;padding:13px 28px;border-radius:28px;font-size:11.5px;text-decoration:none;font-weight:600;box-shadow:0 10px 24px rgba(140,59,71,.32)">📍 View on Google Maps</a>
-<div style="margin-top:28px;padding:22px;background:#fff;border-radius:20px;border:1.5px solid #f3d5d9;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.05)">
-<h4 style="font-size:13px;color:var(--dark);text-align:center;margin-bottom:16px;letter-spacing:1px">DRESS CODE</h4>
-<div style="display:flex;gap:14px;align-items:flex-start"><div style="width:40px;height:40px;background:#fdf2f3;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px">👗</div><div><b style="font-size:12.5px;color:var(--dark)">Women</b><br><span style="font-size:11px;color:#777;line-height:1.5">Elegant formal attire in pastel or jewel tones. Saree, Lehenga or Gown.</span></div></div>
-<div style="display:flex;gap:14px;align-items:flex-start;margin-top:18px"><div style="width:40px;height:40px;background:#f0f0f8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px">🤵</div><div><b style="font-size:12.5px;color:var(--dark)">Men</b><br><span style="font-size:11px;color:#777;line-height:1.5">Suit or traditional formal attire. Sherwani, Bandhgala or Suit.</span></div></div>
-</div>
-</div>
-<div style="padding:28px 22px;background:#fff;border-top:1px solid #f8e8ea">
-<h3 style="font-family:'Great Vibes';font-size:30px;text-align:center;color:var(--dark)">Pre-Wedding Festivities</h3>
-<p style="text-align:center;font-size:10px;letter-spacing:2px;color:#b08a8e;margin-top:2px">JOIN US FOR THE CELEBRATIONS</p>
-<div style="display:flex;flex-direction:column;gap:14px;margin-top:22px">
-<div style="background:linear-gradient(135deg,#fff8f0,#fdf2e6);border:1.8px solid #f5e6d0;border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:13px;color:#8a5a1e">Mehndi Night 🌿</b><br><span style="font-size:10.5px;color:#999;line-height:1.5">Fri, Sep 18, 2026 • 4:00 PM<br>Bride's Home</span></div><div style="width:36px;height:36px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08)">✨</div></div>
-<div style="background:linear-gradient(135deg,#fffef2,#fef9e0);border:1.8px solid #f0e8c0;border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:13px;color:#9a8a1e">Haldi Ceremony 💛</b><br><span style="font-size:10.5px;color:#999;line-height:1.5">Fri, Sep 18, 2026 • 10:00 AM<br>Groom's Home</span></div><div style="width:36px;height:36px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08)">☀️</div></div>
-<div style="background:linear-gradient(135deg,#f8f0ff,#f0e6ff);border:1.8px solid #e8d8f8;border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:13px;color:#6a4a8a">Sangeet Night 🎶</b><br><span style="font-size:10.5px;color:#999;line-height:1.5">Fri, Sep 18, 2026 • 8:00 PM<br>Taj Mahal Palace</span></div><div style="width:36px;height:36px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08)">💃</div></div>
-</div>
-</div>
-<div style="padding:28px 22px;background:linear-gradient(180deg,#fffafb 0%,#fff5f6 100%);border-top:1px solid #f8e8ea">
-<div style="background:#fff;border:1.8px dashed #e8a0a8;border-radius:20px;padding:22px;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.04)">
-<h4 style="font-size:13.5px;color:var(--dark);display:flex;align-items:center;gap:10px">🚐 Transportation & Parking</h4>
-<p style="font-size:11px;color:#777;margin-top:8px;line-height:1.7">Shuttle service from City Center (Colaba) to venue 5PM-7PM, return 11:30PM. Valet parking available. Help: +91 98765 43210</p>
-<h4 style="font-size:13.5px;color:var(--dark);margin-top:22px;display:flex;align-items:center;gap:10px">🏨 Accommodation</h4>
-<p style="font-size:11px;color:#777;margin-top:8px;line-height:1.7">Special rates at Taj Mahal Palace, code <b style="color:var(--dark)">WED2026</b>. Valid till Sep 10. Contact: +91 22 6665 3366</p>
-<h4 style="font-size:13.5px;color:var(--dark);margin-top:22px;display:flex;align-items:center;gap:10px">🎁 Gifts & Blessings</h4>
-<p style="font-size:11px;color:#777;margin-top:8px;line-height:1.7">Your presence is our present! No boxed gifts, blessings only. With love, Veer & Zara.</p>
-</div>
-</div>
-<div style="padding:28px 22px;background:#fff;border-top:1px solid #f8e8ea">
-<div style="text-align:center">
-<h3 style="font-family:'Great Vibes';font-size:32px;color:var(--dark)">Send Your Wishes</h3>
-<p style="font-size:10px;color:#b08a8e;letter-spacing:1.5px;margin-top:4px">LEAVE A HEARTFELT MESSAGE</p>
-<input id="gName" placeholder="Your Full Name" style="width:100%;padding:15px 16px;border:1.8px solid #f0d0d4;border-radius:14px;margin-top:20px;background:#fffafb;font-size:13.5px;outline:none">
-<input id="gEmail" placeholder="your@email.com (optional)" style="width:100%;padding:15px 16px;border:1.8px solid #f0d0d4;border-radius:14px;margin-top:12px;background:#fffafb;font-size:13.5px;outline:none">
-<textarea id="gMsg" placeholder="Write your heartfelt wishes here... 💕" style="width:100%;padding:15px 16px;border:1.8px solid #f0d0d4;border-radius:14px;margin-top:12px;background:#fffafb;font-size:13.5px;height:110px;outline:none;resize:none;line-height:1.6"></textarea>
-<button onclick="sendMsg()" style="width:100%;margin-top:18px;padding:16px;background:linear-gradient(135deg,#8c3b47,#b55a65);color:#fff;border:none;border-radius:28px;font-weight:700;font-size:13.5px;letter-spacing:.6px;box-shadow:0 12px 28px rgba(140,59,71,.34);cursor:pointer">Send Message with Love ❤️</button>
-<div style="margin-top:44px;padding:30px 0 16px;border-top:1.5px solid #f3d5d9;text-align:center">
-<div style="font-family:'Great Vibes';font-size:34px;color:var(--dark)">We can't wait to celebrate with you!</div>
-<div style="font-family:'Great Vibes';font-size:28px;color:#b55a65;margin-top:10px" id="fNames">Veer & Zara</div>
-<div style="margin-top:20px;display:flex;justify-content:center;gap:16px;font-size:12px;color:#b08a8e"><span>💌</span><span>💍</span><span>💖</span><span>🥂</span><span>💕</span></div>
-<p style="font-size:9px;letter-spacing:2.2px;color:#bbb;margin-top:20px;font-weight:500">MADE WITH LOVE • 2026 • #VeerWedsZara • 500 LINES PRO</p>
-<p style="font-size:8px;letter-spacing:1px;color:#ccc;margin-top:8px">VIDEO LUXURY OPENING • SINGLE SEAL • DARK PINK HEART</p>
-</div>
-</div>
-</div>
-</div>
+
 <script>
-let opened=false;
-function openCard(){
- if(opened) return; opened=true;
- document.getElementById('gate').classList.add('opening');
- if(navigator.vibrate) navigator.vibrate([60,40,100]);
- setTimeout(()=>{
-  document.getElementById('gate').classList.add('out');
-  setTimeout(()=>{
-   document.getElementById('gate').style.display='none';
-   document.body.style.overflow='auto';
-   document.documentElement.style.overflow='auto';
-   let main=document.getElementById('main');
-   main.style.display='block'; main.classList.add('show');
-   initHeart();
-  },1200);
- },3000);
-}
-(function(){
- try{
-  let p=new URLSearchParams(location.search);
-  let data=null;
-  if(p.has('d')){ data=JSON.parse(decodeURIComponent(atob(p.get('d')))); }
-  else { data=JSON.parse(localStorage.getItem('WED_500')||'null'); }
-  if(!data) return;
-  if(data.groom||data.bride){
-   let g=data.groom||'Veer', b=data.bride||'Zara';
-   let son=data.sonOf||'MR. AHMED & MRS. ALIYA', dau=data.dauOf||'MR. ABBAS & MRS. RUBINA';
-   document.getElementById('hNames').innerHTML=`<span>Son of ${son}</span>${g}<span style="font-family:'Great Vibes';font-size:44px;margin:6px 0">&</span>${b}<span>Daughter of ${dau}</span>`;
-   document.getElementById('fNames').innerText=g+' & '+b;
-  }
-  if(data.date){ let el=document.getElementById('sDate'); if(el) el.innerText=data.date; }
-  if(data.wDate) window.TARGET=new Date(data.wDate).getTime();
-  if(data.vName){ let v=document.getElementById('vName'); if(v) v.innerText=data.vName; }
-  if(data.vAddr){ let va=document.getElementById('vAddr'); if(va) va.innerText=data.vAddr; }
- }catch(e){}
-})();
-window.TARGET=window.TARGET||new Date('2026-09-20T19:00:00').getTime();
-setInterval(()=>{
- let diff=window.TARGET-Date.now(); if(diff<0) return;
- document.getElementById('d').innerText=Math.floor(diff/86400000).toString().padStart(2,'0');
- document.getElementById('h').innerText=Math.floor(diff%86400000/3600000).toString().padStart(2,'0');
- document.getElementById('m').innerText=Math.floor(diff%3600000/60000).toString().padStart(2,'0');
- document.getElementById('s').innerText=Math.floor(diff%60000/1000).toString().padStart(2,'0');
-},1000);
-function initHeart(){
- let c=document.getElementById('hCanvas'); if(!c) return;
- let ctx=c.getContext('2d'), drawing=false;
- ctx.fillStyle='#6d1f2b';
- ctx.fillRect(0,0,320,320);
- ctx.fillStyle='rgba(200,164,90,.14)';
- for(let i=0;i<220;i++){ let x=Math.random()*320, y=Math.random()*320; ctx.beginPath(); ctx.arc(x,y,1.3,0,Math.PI*2); ctx.fill(); }
- ctx.fillStyle='rgba(255,255,255,.94)';
- ctx.font='700 12px Poppins'; ctx.textAlign='center';
- ctx.fillText('SCRATCH MY HEART ♡',160,152);
- ctx.font='400 9.5px Poppins';
- ctx.fillStyle='rgba(255,255,255,.68)';
- ctx.fillText('Reveal the date',160,170);
- ctx.globalCompositeOperation='destination-out';
- function pos(e){
-  let r=c.getBoundingClientRect();
-  let cx=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
-  let cy=(e.touches?e.touches[0].clientY:e.clientY)-r.top;
-  return {x:cx/r.width*320, y:cy/r.height*320};
- }
- function draw(e){
-  let p=pos(e);
-  ctx.beginPath(); ctx.arc(p.x,p.y,32,0,Math.PI*2); ctx.fill();
- }
- c.addEventListener('mousedown',()=>drawing=true);
- c.addEventListener('mouseup',()=>drawing=false);
- c.addEventListener('mouseleave',()=>drawing=false);
- c.addEventListener('mousemove',e=>{ if(drawing) draw(e); });
- c.addEventListener('touchstart',()=>drawing=true,{passive:true});
- c.addEventListener('touchend',()=>drawing=false);
- c.addEventListener('touchmove',e=>{ if(drawing){ e.preventDefault(); draw(e); }},{passive:false});
-}
-function sendMsg(){
- let n=document.getElementById('gName').value.trim();
- if(!n){ alert('Please enter your name ❤️'); return; }
- alert('Thank you '+n+'! Your wishes sent to Veer & Zara 💕');
- document.getElementById('gName').value='';
- document.getElementById('gEmail').value='';
- document.getElementById('gMsg').value='';
+function downloadImage() {
+    alert("Download option clicked!");
 }
 </script>
+
 </body>
 </html>
