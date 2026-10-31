@@ -4,108 +4,131 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Veer & Zara</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root{--dark:#8c3b47;--pink:#e9c5c9;--gold:#c8a45a}
+:root{--dark:#8c3b47;--gold:#c8a45a;--bg:#fdf6f7}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#fdf6f7;font-family:'Poppins',sans-serif}
+body{background:var(--bg);font-family:'Poppins',sans-serif;overflow-x:hidden}
 
-/* ===== GATE - PHOTO SAME ===== */
-#gate{position:fixed;inset:0;background:#e9c5c9;display:flex;align-items:center;justify-content:center;z-index:9999;transition:transform 1s cubic-bezier(.77,0,.175,1)}
-#gate.open{transform:translateY(-110%)}
-.phone{width:360px;height:740px;position:relative;border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);background:#d9aab0;cursor:pointer}
+/* ===== GATE - PHOTO EXACT + ROSHNI ===== */
+#gate{position:fixed;inset:0;background:#e9c5c9;display:flex;align-items:center;justify-content:center;z-index:9999;transition:transform 1.1s cubic-bezier(.77,0,.175,1)}
+#gate.opening .flap{transform:rotateX(-185deg)}
+#gate.opening .seal{transform:translate(-50%,-50%) scale(0);opacity:0}
+#gate.opening .light{opacity:1;transform:translate(-50%,-50%) scale(1)}
+#gate.open{transform:translateY(-115%)}
+.phone{width:360px;height:740px;position:relative;border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);perspective:1200px;background:#d6a4ac}
 
-/* Textured envelope - Photo jesa emboss */
-.env{position:absolute;inset:0;background-color:#d6a4ac;
-background-image:
-radial-gradient(circle at 15% 20%, rgba(255,255,255,.25) 1px, transparent 1.5px),
-radial-gradient(circle at 80% 30%, rgba(255,255,255,.2) 1px, transparent 1.5px),
-url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 50 Q35 30 45 45 Q50 60 30 50 M100 20 Q110 10 120 25 Q115 40 100 20 M160 80 Q165 60 175 75 Q170 95 160 80 M40 150 Q45 130 55 145 Q50 165 40 150 M120 140 Q125 120 135 135 Q130 155 120 140' fill='none' stroke='%23b07a82' stroke-width='.5' opacity='.35'/%3E%3C/svg%3E");
-}
-.env:before{content:'';position:absolute;top:0;left:0;right:0;height:52%;background:linear-gradient(180deg, rgba(255,255,255,.15), transparent);border-bottom:1px solid rgba(255,255,255,.2)}
-
-/* Diagonal fold - Photo jesa */
-.fold{position:absolute;bottom:0;right:0;width:100%;height:45%;background:#c9989f;clip-path:polygon(40% 0,100% 0,100% 100%,0 100%);border-top:1.5px solid rgba(255,255,255,.3);box-shadow:inset 0 8px 20px rgba(0,0,0,.08)}
+.env{position:absolute;inset:0;background:#d6a4ac;background-image:url("data:image/svg+xml,%3Csvg width='180' height='180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.15' fill='%23a67c82'%3E%3Cpath d='M30 30 c3-4 7-3 8 2 c1 4 -3 8 -8 7 c-4-1 -6-6 -3-9z M90 50 c2-3 5-2 6 1 c1 2 -2 5 -5 4 c-3 0 -4-3 -1-5z'/%3E%3C/g%3E%3C/svg%3E")}
+.flap{position:absolute;top:0;left:0;right:0;height:52%;background:linear-gradient(180deg,#ddb5bb,#c9a0a8);clip-path:polygon(0 0,100% 0,50% 85%);z-index:4;transform-origin:top;transition:1s cubic-bezier(.77,0,.175,1);border-bottom:1px solid #b88e94}
+.fold-line{position:absolute;top:44%;left:0;right:0;height:1px;background:rgba(0,0,0,.12);z-index:3;transform:rotate(-18deg);transform-origin:left}
 
 /* Golden Wax Seal */
-.seal{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);width:88px;height:88px;background:radial-gradient(circle at 30% 30%, #f3d68b, #c8a45a 40%, #9c7a3a 100%);border-radius:50%;box-shadow:0 4px 0 #9c7a3a, 0 8px 20px rgba(0,0,0,.3), inset 0 2px 3px rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;border:2px solid #b38f4a;z-index:10}
-.seal:after{content:'';position:absolute;inset:6px;border:1px dashed #7a5a2e;border-radius:50%;opacity:.6}
-.seal b{font-family:'Cormorant Garamond';font-size:15px;line-height:1.1;color:#4a3018;text-align:center;text-shadow:0 1px 0 rgba(255,255,255,.4)}
+.seal{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:84px;height:84px;background:radial-gradient(circle at 30% 25%,#ffefb0 0%,#f3d67a 15%,#d4a84a 40%,#b88a2e 70%,#9a6e20 100%);border-radius:50%;z-index:6;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px #a67c20,0 3px 0 #8a651a,0 8px 18px rgba(0,0,0,.4),inset 0 2px 4px rgba(255,255,255,.8),inset 0 -4px 6px rgba(0,0,0,.4);transition:.6s;clip-path:polygon(50% 0%,61% 4%,72% 2%,82% 8%,90% 18%,96% 28%,98% 40%,100% 51%,97% 63%,93% 74%,86% 84%,76% 92%,65% 97%,52% 100%,40% 96%,28% 91%,18% 82%,9% 71%,3% 58%,0% 44%,2% 31%,8% 19%,18% 8%,30% 2%)}
+.seal-inner{width:64px;height:64px;border:1.5px solid #7a5a12;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Cormorant Garamond';font-weight:700;font-size:13px;color:#5c4010;line-height:1.1;text-shadow:0 1px 0 rgba(255,255,255,.6)}
 
-/* YOU ARE INVITED - Bottom */
-.you{position:absolute;bottom:85px;left:0;right:0;text-align:center;z-index:5}
-.you svg{width:160px;opacity:.6}
-.you p{font-family:'Cormorant Garamond';letter-spacing:4px;font-size:11px;color:#5a2e36;margin-top:4px;font-weight:600}
+/* ROSHNI EFFECT */
+.light{position:absolute;left:50%;top:45%;width:220px;height:380px;transform:translate(-50%,-50%) scale(0.2);background:radial-gradient(ellipse at center, rgba(255,240,180,0.95) 0%, rgba(255,215,120,0.7) 25%, rgba(255,180,80,0.3) 50%, transparent 75%);filter:blur(8px);opacity:0;z-index:2;transition:1s cubic-bezier(.16,1,.3,1);pointer-events:none}
 
-/* Urdu Button */
-.urdu{position:absolute;bottom:18px;left:14px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:5px 12px;border-radius:20px;font-size:11px;color:#8c3b47;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.you-are{position:absolute;bottom:110px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond';color:#7a4a52;letter-spacing:3px;font-size:11px;font-weight:600;z-index:3}
+.urdu{position:absolute;bottom:18px;left:18px;background:rgba(255,255,255,.85);padding:6px 12px;border-radius:18px;font-size:11px;color:#8c3b47;backdrop-filter:blur(4px)}
+.hint{position:absolute;bottom:-36px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:2px;color:#8a5a5e;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
 
-/* ===== INSIDE CONTENT ===== */
-#content{padding:0;opacity:0;transition:.8s}
-#content.show{opacity:1}
-.hero{height:100vh;background:linear-gradient(180deg, #fdf6f7 0%, #f9e8ea 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:85px;position:relative;overflow:hidden}
-.hero:before{content:'❦';position:absolute;top:20px;font-size:40px;color:#e9c5c9;opacity:.6;letter-spacing:10px}
-.floral{position:absolute;width:220px;height:220px;opacity:.18;background:radial-gradient(circle, #d6a4ac 2px, transparent 2.5px);background-size:22px 22px;mask:radial-gradient(circle, black 40%, transparent 70%)}
-.floral.l{top:60px;left:-30px}.floral.r{top:60px;right:-30px;transform:scaleX(-1)}
-.orn{margin-top:15px;opacity:.5}
-.hero h4{font-family:'Cormorant Garamond';letter-spacing:5px;font-size:10px;color:#b55a65;margin-top:35px}
-.hero h1{font-family:'Great Vibes';font-size:68px;color:var(--dark);margin-top:42px;line-height:.9;text-align:center;font-weight:400}
-.hero h1 span{font-size:34px;display:block;margin:6px 0;color:#c27a85}
-.hero .parent{font-size:11px;color:#9a7a80;margin-top:18px;text-align:center;line-height:1.6}
-.count{margin-top:28px;display:flex;gap:10px}
-.count div{background:#fff;border:1px solid #f2d5d8;border-radius:12px;padding:10px 14px;text-align:center;min-width:56px;box-shadow:0 4px 12px rgba(0,0,0,.04)}
-.count b{font-family:'Cormorant Garamond';font-size:20px;color:var(--dark);display:block}
-.count span{font-size:8px;letter-spacing:1px;color:#b18d91}
+/* MAIN CONTENT */
+#main{max-width:420px;margin:0 auto;background:#fff;display:none}
+#main.show{display:block;animation:fadeIn .8s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* Sections - Andar graphics */
-.section{padding:38px 18px;background:#fff;margin:12px;border-radius:22px;box-shadow:0 6px 24px rgba(0,0,0,.04);border:1px solid #f9e8ea;position:relative;overflow:hidden}
-.section:before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle, #f9e8ea 1px, transparent 1.5px);background-size:14px 14px;opacity:.8}
-.sec-title{font-family:'Great Vibes';font-size:34px;color:var(--dark);text-align:center}
-.sec-line{width:40px;height:1px;background:#e9c5c9;margin:10px auto 18px}
+/* Hero - Veer Zara NEECHE kiya */
+.hero{height:78vh;background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.15)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=900') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;color:white;text-align:center;padding:0 20px 60px}
+.hero h1{font-family:'Great Vibes';font-size:62px;line-height:.9;text-shadow:0 2px 20px rgba(0,0,0,.5);margin-top:40px}
+.hero .top-label{font-size:10px;letter-spacing:2.5px;opacity:.9;margin-bottom:18px}
+
+/* Floral Divider Graphic */
+.divider{width:100%;height:30px;display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0;color:#d6a4ac}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,#e8a0a8,transparent)}
+
+.scratch-box{background:#fffafb;padding:40px 20px;text-align:center;position:relative}
+.scratch-box::before{content:'❧';position:absolute;top:10px;left:50%;transform:translateX(-50%);color:#e8a0a8;font-size:18px}
+.heart-wrap{position:relative;width:280px;height:260px;margin:20px auto}
+.heart-bg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#fce4e6,#f9d2d6);border:2px solid #e8a0a8;text-align:center}
+#scratchCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:pointer}
+
+.countdown{display:flex;gap:10px;justify-content:center;margin:20px 0}
+.cd{background:#fff;border:1px solid #f0d0d4;border-radius:12px;padding:12px 6px;min-width:62px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+.cd b{font-size:20px;color:#b55a65;display:block}.cd span{font-size:8px;letter-spacing:1px;color:#999}
+.timeline{padding:20px;background:#fff} .timeline h3{font-family:'Great Vibes';font-size:26px;text-align:center;color:#b55a65;margin-bottom:16px}
+.time-item{display:flex;gap:12px;padding:14px 0;border-left:2px solid #f3d5d9;margin-left:10px;padding-left:18px;position:relative}
+.time-item::before{content:'';position:absolute;left:-7px;top:18px;width:12px;height:12px;background:#e8a0a8;border-radius:50%;border:2px solid #fff}
+.card-sec{padding:24px 20px;text-align:center;border-top:1px dashed #f0d0d4}
+.btn{display:inline-block;margin-top:12px;padding:10px 18px;background:#b55a65;color:#fff;border-radius:22px;text-decoration:none;font-size:12px;font-weight:600}
+.input{width:100%;padding:12px;border:1px solid #f0d0d4;border-radius:10px;margin-top:8px;font-size:13px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute"><defs><clipPath id="heartClip" clipPathUnits="objectBoundingBox"><path d="M0.5,0.9 C0.2,0.6,0,0.35,0.2,0.15 C0.32,0.02,0.5,0.08,0.5,0.2 C0.5,0.08,0.68,0.02,0.8,0.15 C1,0.35,0.8,0.6,0.5,0.9 Z"/></clipPath></defs></svg>
 
-<!-- GATE -->
-<div id="gate" onclick="openCard()">
-  <div class="phone">
-    <div class="env"></div>
-    <div class="fold"></div>
-    <div class="seal"><b>Tap<br>to<br>open</b></div>
-    <div class="you">
-      <svg viewBox="0 0 200 30"><path d="M10 15 Q50 5 100 15 Q150 25 190 15" fill="none" stroke="#6b3a42" stroke-width=".6"/><text x="100" y="28" text-anchor="middle" font-size="7" letter-spacing="3" fill="#5a2e36">✦ YOU ARE INVITED ✦</text></svg>
-    </div>
-    <div class="urdu">● Urdu</div>
-  </div>
+<div id="gate" onclick="openGate()">
+<div class="phone">
+<div class="env"></div>
+<div class="fold-line"></div>
+<div class="flap"></div>
+<div class="light" id="light"></div>
+<div class="seal"><div class="seal-inner">Tap<br>to<br><span style="font-size:10px">open</span></div></div>
+<div class="you-are">✦ YOU ARE INVITED ✦</div>
+<div class="urdu">● Urdu</div>
+</div>
+<div class="hint">✨ TAP THE SEAL ✨</div>
 </div>
 
-<!-- CONTENT -->
-<div id="content">
-  <div class="hero">
-    <div class="floral l"></div><div class="floral r"></div>
-    <h4>WEDDING INVITATION</h4>
-    <!-- Veer Zara thora neeche - 42px margin -->
-    <h1 id="hName">Veer <span>&</span> Zara</h1>
-    <div class="parent" id="hParent">Son of Mr. Ahmed & Mrs. Aliya<br>Daughter of Mr. Abbas & Mrs. Rubina</div>
-    <div class="count" id="countdown"></div>
-    <div class="orn">❧</div>
-  </div>
+<div id="main">
+<div class="hero">
+<p class="top-label" id="heroTop">WE ARE HONORED TO WELCOME YOU TO THE<br><span style="margin-top:6px;display:inline-block">Wedding ceremony of</span></p>
+<h1 id="heroNames">Veer<br>&<br>Zara</h1>
+<p style="font-size:11px;margin-top:18px;opacity:.9;line-height:1.5" id="heroParents">Son of Mr. Ahmed & Mrs. Aliya<br>Daughter of Mr. Abbas & Mrs. Rubina</p>
+</div>
 
-  <div class="section">
-    <div class="sec-title">Venue</div><div class="sec-line"></div>
-    <p id="vName" style="text-align:center;font-weight:600;color:#8c3b47">The Taj Mahal Palace</p>
-    <p id="vAddr" style="text-align:center;font-size:12px;color:#8a7a7d;margin-top:6px">Apollo Bandar, Colaba, Mumbai</p>
-    <a id="vMap" href="#" target="_blank" style="display:block;text-align:center;margin-top:14px;color:#b55a65;font-size:12px">View on Map →</a>
-  </div>
+<div style="padding:28px 20px;text-align:center;color:#666;font-size:13px;line-height:1.7;background:#fff">
+<div class="divider">❦</div>
+<span id="welcomeText">We are honored to welcome you to Wedding ceremony of Veer & Zara, they begin their journey together in faith and love. Thank you for being part of our New Journey</span>
+<div class="divider">❦</div>
+</div>
+
+<div class="scratch-box">
+<div style="font-family:'Great Vibes';font-size:32px;color:#b55a65">Scratch to Reveal</div>
+<div style="font-size:11px;color:#a06a70;margin-top:4px" id="scratchTop">Reveal the special date 💖</div>
+<div class="heart-wrap" style="clip-path:url(#heartClip);-webkit-clip-path:url(#heartClip)">
+<div class="heart-bg"><div style="font-size:14px;font-weight:700;color:#8a2a3a" id="inTop">You're Invited!</div><div style="margin-top:6px;font-size:19px;font-weight:700;color:#6e1f2d" id="inDate">September 20, 2026</div><div style="font-family:'Great Vibes';margin-top:6px;font-size:20px;color:#b55a65" id="inBottom">Our Forever Begins</div></div>
+<canvas id="scratchCanvas" width="280" height="260"></canvas>
+</div>
+<div style="font-size:11px;color:#aaa">Dil ko ungli se ragdo 💕</div>
+</div>
+
+<div style="text-align:center;padding:10px 20px 20px;background:#fff"><div style="font-family:'Great Vibes';font-size:26px;color:#b55a65">Counting Down to Forever</div><img src="https://images.unsplash.com/photo-1520854221256-17451ccdf07d?w=400" style="width:100%;border-radius:12px;margin:14px 0;max-height:220px;object-fit:cover"><div class="countdown"><div class="cd"><b id="d">89</b><span>DAYS</span></div><div class="cd"><b id="h">22</b><span>HOURS</span></div><div class="cd"><b id="m">03</b><span>MINUTES</span></div><div class="cd"><b id="s">30</b><span>SECONDS</span></div></div></div>
+
+<div class="timeline"><h3>Program Timeline</h3><div id="timelineBox"></div></div>
+<div class="card-sec" style="background:#fff8f8"><h3 style="font-family:'Great Vibes';color:#b55a65;font-size:24px">Venue</h3><p style="font-weight:600;margin-top:8px" id="vName">The Taj Mahal Palace</p><p style="font-size:12px;color:#666" id="vAddr">Apollo Bandar, Colaba, Mumbai</p><a class="btn" id="vMap" href="https://maps.google.com/?q=Taj+Mahal+Palace+Mumbai" target="_blank">View on Google Maps</a></div>
+<div class="card-sec"><h3 style="font-family:'Great Vibes';color:#b55a65;font-size:26px">Send a Message</h3><input class="input" placeholder="Your Name"><textarea class="input" style="height:80px" placeholder="Your Message..."></textarea><button class="btn" style="width:100%;border:none;margin-top:12px;padding:12px" onclick="alert('Message Sent ❤️')">Send Message</button><div style="margin-top:30px;font-family:'Great Vibes';font-size:24px;color:#b55a65">We can't wait to celebrate!<br><span id="footerNames">Veer & Zara</span></div></div>
 </div>
 
 <script>
-function openCard(){document.getElementById('gate').classList.add('open');setTimeout(()=>{document.getElementById('content').classList.add('show')},600); window.scrollTo(0,0)}
-// Countdown
-let wedding = new Date('2026-09-20'); let savedData = JSON.parse(localStorage.getItem('WOW_FINAL_V2')||'{}'); if(savedData.wDate) wedding=new Date(savedData.wDate);
-function tick(){let now=new Date();let d=wedding-now;if(d<0)d=0;let days=Math.floor(d/86400000);let hrs=Math.floor(d%86400000/3600000);let mins=Math.floor(d%3600000/60000);let secs=Math.floor(d%60000/1000);document.getElementById('countdown').innerHTML=`<div><b>${days}</b><span>DAYS</span></div><div><b>${hrs}</b><span>HRS</span></div><div><b>${mins}</b><span>MINS</span></div><div><b>${secs}</b><span>SECS</span></div>`}setInterval(tick,1000);tick();
-// Admin data load
-if(savedData.groom){document.getElementById('hName').innerHTML=`${savedData.groom} <span>&</span> ${savedData.bride}`; document.getElementById('hParent').innerHTML=`${savedData.gP}<br>${savedData.bP}`; document.getElementById('vName').innerText=savedData.vN; document.getElementById('vAddr').innerText=savedData.vA; document.getElementById('vMap').href=savedData.vM}
+// Admin se data load
+function loadData(){let s=localStorage.getItem('WOW_FINAL_V2');if(!s)return;try{let d=JSON.parse(s);document.getElementById('heroNames').innerHTML=d.groom+'<br>&<br>'+d.bride;document.getElementById('footerNames').innerText=d.groom+' & '+d.bride;document.getElementById('heroParents').innerHTML=d.gP+'<br>'+d.bP;document.getElementById('inDate').innerText=d.sDate;document.getElementById('inTop').innerText=d.sTop;document.getElementById('inBottom').innerText=d.sBottom;document.getElementById('vName').innerText=d.vN;document.getElementById('vAddr').innerText=d.vA;document.getElementById('vMap').href=d.vM;if(d.wDate)target=new Date(d.wDate).getTime();if(d.timeline){let box=document.getElementById('timelineBox');box.innerHTML='';d.timeline.forEach(t=>{let p=t.split('|');box.innerHTML+=`<div class="time-item"><div><b>${p[0]||t}</b><br><span style="font-size:12px;color:#777">${p[1]||''}</span><br><span style="font-size:11px;color:#999">${p[2]||''}</span></div></div>`})}}catch(e){}} loadData();
+
+function openGate(){
+let g=document.getElementById('gate');g.classList.add('opening');
+setTimeout(()=>{g.classList.add('open');setTimeout(()=>{g.style.display='none';document.getElementById('main').classList.add('show');initScratch();},1000)},900);
+}
+let target=new Date('2026-09-20T00:00:00').getTime();setInterval(()=>{let diff=target-new Date().getTime();if(diff<0)return;document.getElementById('d').innerText=Math.floor(diff/86400000);document.getElementById('h').innerText=Math.floor(diff%86400000/3600000);document.getElementById('m').innerText=Math.floor(diff%3600000/60000);document.getElementById('s').innerText=Math.floor(diff%60000/1000);},1000);
+function initScratch(){
+let canvas=document.getElementById('scratchCanvas'),ctx=canvas.getContext('2d');
+let grad=ctx.createLinearGradient(0,0,280,260);grad.addColorStop(0,'#8e1f3a');grad.addColorStop(0.5,'#c93a5a');grad.addColorStop(1,'#a8324e');ctx.fillStyle=grad;ctx.fillRect(0,0,280,260);
+ctx.fillStyle='rgba(255,255,255,0.45)';for(let i=0;i<600;i++){ctx.beginPath();ctx.arc(Math.random()*280,Math.random()*260,Math.random()*1.6,0,Math.PI*2);ctx.fill();}
+ctx.globalCompositeOperation='destination-out';let d=false;
+function pt(e){let r=canvas.getBoundingClientRect();let x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;let y=(e.touches?e.touches[0].clientY:e.clientY)-r.top;ctx.beginPath();ctx.arc(x/r.width*280,y/r.height*260,26,0,Math.PI*2);ctx.fill();}
+canvas.addEventListener('mousedown',()=>d=true);canvas.addEventListener('mouseup',()=>d=false);canvas.addEventListener('mousemove',e=>{if(d)pt(e)});
+canvas.addEventListener('touchstart',()=>d=true,{passive:true});canvas.addEventListener('touchend',()=>d=false);canvas.addEventListener('touchmove',e=>{if(d){e.preventDefault();pt(e);}},{passive:false});
+}
 </script>
 </body>
 </html>
