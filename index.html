@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Veer & Zara | Wedding Invitation</title>
+<title>Veer & Zara</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#050203;font-family:'Poppins',sans-serif;overflow:hidden}
@@ -33,7 +33,7 @@ canvas#fire{position:fixed;inset:0;z-index:700;pointer-events:none;display:none}
 .music{position:fixed;top:14px;right:14px;z-index:500;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.95);border:none;font-size:18px;cursor:pointer}
 .section{padding:24px 20px;text-align:center;color:#fff}.section h2{font-size:38px;color:#e8c05c}.sub{font-size:11px;letter-spacing:3px;color:#c9a86a;font-weight:500}
 .count{display:flex;gap:10px;justify-content:center;margin-top:16px}.c-box{background:#120a0c;border:1px solid rgba(212,160,23,.4);border-radius:14px;width:74px;padding:14px 0}.c-box b{font-size:24px;color:#ffdf8a;font-weight:600}.c-box span{font-size:10px;color:#c9a86a}
-.admin-dot{position:fixed;bottom:12px;right:12px;z-index:1000;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid #e8c05c;font-size:15px;cursor:pointer;opacity:.9;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.admin-dot{position:fixed;bottom:12px;right:12px;z-index:1000;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid #e8c05c;font-size:15px;cursor:pointer;opacity:.9}
 .hidden-heart{position:fixed;bottom:12px;left:12px;z-index:1000;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,223,138,.3);font-size:14px;cursor:pointer;opacity:.6}
 #adminPanel{position:fixed;inset:0;background:#0d0709;z-index:2000;display:none;overflow-y:auto;padding:16px;color:#fff}
 .admin-card{background:#1a0f12;border:1px solid #ffdf8a44;border-radius:16px;padding:16px;margin-top:12px}
@@ -46,17 +46,15 @@ canvas#fire{position:fixed;inset:0;z-index:700;pointer-events:none;display:none}
 #loveOverlay{position:fixed;inset:0;background:#000e;display:none;align-items:center;justify-content:center;z-index:4000;padding:20px;text-align:center}
 </style></head><body>
 <canvas id="fire"></canvas>
-<button class="admin-dot" onclick="openAdminLogin()" title="Admin">⚙️</button>
-<button class="hidden-heart" onclick="secretLove()" title="For Zara">💛</button>
+<button class="admin-dot" onclick="openAdminLogin()">⚙️</button>
+<button class="hidden-heart" onclick="secretLove()">💛</button>
 <div id="gate"><div class="gate-rays"></div><div class="gate-glow"></div><div class="gate-inner">
 <p class="arabic" style="font-size:19px;color:#ffdf8a;line-height:1.8">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-<p style="letter-spacing:5px;font-size:10px;color:#d8b45a;margin-top:2px">BISMILLAH</p>
-<div class="envelope" id="env"><div class="env-back"></div><div class="env-letter"><div><h3 class="script" id="gateNames" style="font-size:30px;color:#7a1a2e;line-height:1">Veer & Zara</h3><p id="gateDate" style="font-size:10px;letter-spacing:2px;color:#a88;margin-top:6px">20 SEPTEMBER 2026</p></div></div><div class="env-front"></div><div class="env-flap"></div><div class="seal"><div class="seal-inner"><span style="font-size:22px">❤️</span></div></div></div>
+<div class="envelope" id="env"><div class="env-back"></div><div class="env-letter"><div><h3 class="script" id="gateNames" style="font-size:30px;color:#7a1a2e;line-height:1">Veer & Zara</h3><p id="gateDate" style="font-size:10px;letter-spacing:2px;color:#a88;margin-top:6px">20 DECEMBER 2026</p></div></div><div class="env-front"></div><div class="env-flap"></div><div class="seal"><div class="seal-inner"><span style="font-size:22px">❤️</span></div></div></div>
 <h1 class="script" id="gateNames2" style="font-size:62px;line-height:1.05;font-weight:400;background:linear-gradient(180deg,#fff6c8 0%,#f7d774 35%,#d4a017 70%,#fff0a0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Veer & Zara</h1>
-<p style="font-size:11px;letter-spacing:3px;color:#c9a86a;margin-top:10px" id="gateVenue">20 SEPTEMBER 2026 &nbsp;•&nbsp; GUJRANWALA</p>
+<p style="font-size:11px;letter-spacing:3px;color:#c9a86a;margin-top:10px" id="gateVenue">20 DECEMBER 2026 &nbsp;•&nbsp; GUJRANWALA</p>
 <button class="tap-btn" id="tapBtn" type="button">Tap to Open</button>
 <button onclick="playAyat(event)" id="ayatBtn" style="background:rgba(255,255,255,.08);color:#ffdf8a;border:1px solid rgba(255,223,138,.45);padding:9px 18px;border-radius:20px;margin-top:12px;cursor:pointer;font-size:12px">🔊 Ayat Suno</button>
-<p style="position:absolute;bottom:22px;left:0;right:0;font-size:11px;color:#c9a86a">Premium Digital Invitation</p>
 </div></div>
 <div id="flash" style="position:fixed;inset:0;background:radial-gradient(circle,#fff,#ffdf8a 45%,transparent 70%);opacity:0;pointer-events:none;z-index:9998;transition:opacity .7s"></div>
 <audio id="ayatAudio" preload="none"><source src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/6812.mp3" type="audio/mpeg"></audio>
@@ -64,22 +62,28 @@ canvas#fire{position:fixed;inset:0;z-index:700;pointer-events:none;display:none}
 <button class="music" id="musicBtn">🎵</button>
 <audio id="song" loop preload="auto"></audio>
 <div class="code-screen" id="codeScreen">
-<p style="letter-spacing:4px;font-size:11px;color:#c9a86a">WEDDING INVITATION</p>
-<p class="arabic" style="font-size:19px;color:#ffdf8a;margin-top:12px">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-<h2 class="script" style="font-size:52px;color:#e8c05c;margin-top:8px;line-height:1">Welcome</h2>
-<p style="font-size:13px;color:#c9b8a8;line-height:1.7;margin-top:6px">Please enter your invitation code<br>to view your personal card.</p>
+<p class="arabic" style="font-size:19px;color:#ffdf8a">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+<h2 class="script" style="font-size:52px;color:#e8c05c;margin-top:10px;line-height:1">Welcome</h2>
 <div class="code-card"><p style="font-size:11px;font-weight:600;color:#c9a86a;letter-spacing:2px">INVITATION CODE</p>
 <input id="guestCode" placeholder="YOUR CODE" maxlength="12" autocomplete="off">
 <button class="btn btn-gold" id="checkBtn" style="width:100%" type="button">View Invitation</button>
-<p id="codeError" style="display:none;color:#ff8a8a;font-size:12px;margin-top:10px">Invalid code. Please try again.</p>
-<p style="font-size:11px;color:#c9b8a8;margin-top:10px">No code? <span style="color:#25D366;font-weight:600;cursor:pointer" onclick="askCode()">Request on WhatsApp</span></p></div>
+<p id="codeError" style="display:none;color:#ff8a8a;font-size:12px;margin-top:10px">Invalid code.</p></div>
+<div style="margin-top:18px;background:#120a0c;border:1px solid rgba(212,160,23,.4);border-radius:14px;padding:14px">
+<p style="font-size:10px;letter-spacing:3px;color:#c9a86a">UNTIL QUBOOL HAI</p>
+<div style="display:flex;gap:8px;justify-content:center;margin-top:10px">
+<div style="background:#050203;border:1px solid rgba(212,160,23,.3);border-radius:10px;width:68px;padding:10px 0"><b id="d2" style="font-size:22px;color:#ffdf8a">00</b><br><span style="font-size:9px;color:#c9a86a">DAYS</span></div>
+<div style="background:#050203;border:1px solid rgba(212,160,23,.3);border-radius:10px;width:68px;padding:10px 0"><b id="h2" style="font-size:22px;color:#ffdf8a">00</b><br><span style="font-size:9px;color:#c9a86a">HOURS</span></div>
+<div style="background:#050203;border:1px solid rgba(212,160,23,.3);border-radius:10px;width:68px;padding:10px 0"><b id="m2" style="font-size:22px;color:#ffdf8a">00</b><br><span style="font-size:9px;color:#c9a86a">MINS</span></div>
+<div style="background:#050203;border:1px solid rgba(212,160,23,.3);border-radius:10px;width:68px;padding:10px 0"><b id="s2" style="font-size:22px;color:#ffdf8a">00</b><br><span style="font-size:9px;color:#c9a86a">SECS</span></div>
+</div>
+</div>
 </div>
 <div id="personalCard" style="display:none">
 <section class="hero"><p style="letter-spacing:4px;font-size:11px;color:#c9a86a">THE WEDDING OF</p><h1 class="script" id="heroNames">Veer & Zara</h1><p id="heroTagline" style="font-size:13px;color:#c9b8a8;margin-top:8px">Two hearts, one dua, one forever.</p>
-<div id="shadiMubarakBanner" style="display:none;background:linear-gradient(180deg,#ffdf8a,#d4a017);color:#000;padding:14px;border-radius:14px;margin-top:14px;font-weight:600">Shadi Mubarak! Qubool Hai!</div>
+<div id="shadiMubarakBanner" style="display:none;background:linear-gradient(180deg,#ffdf8a,#d4a017);color:#000;padding:14px;border-radius:14px;margin-top:14px;font-weight:600">Shadi Mubarak!</div>
 </section>
 <div class="guest-box"><p style="font-size:11px;letter-spacing:3px;color:#c9a86a">ASSALAM-O-ALAIKUM</p><h2 class="script" id="guestNameShow" style="font-size:46px;line-height:1.1;margin:10px 0;color:#e8c05c">Guest</h2><p id="guestMsg" style="font-size:13px;line-height:1.7;color:#d8c9a0">You are warmly invited.</p></div>
-<section class="section" style="padding-top:6px"><h2 class="script">Counting Love</h2><p class="sub">UNTIL QUBOOL HAI</p><div class="count"><div class="c-box"><b id="d">00</b><br><span>DAYS</span></div><div class="c-box"><b id="h">00</b><br><span>HOURS</span></div><div class="c-box"><b id="m">00</b><br><span>MINS</span></div><div class="c-box"><b id="s">00</b><br><span>SECS</span></div></div></section>
+<section class="section" style="padding-top:6px"><h2 class="script">Counting Love</h2><div class="count"><div class="c-box"><b id="d">00</b><br><span>DAYS</span></div><div class="c-box"><b id="h">00</b><br><span>HOURS</span></div><div class="c-box"><b id="m">00</b><br><span>MINS</span></div><div class="c-box"><b id="s">00</b><br><span>SECS</span></div></div></section>
 <section class="section" style="padding-top:0">
 <div style="background:#120a0c;border:1px solid rgba(212,160,23,.35);border-radius:18px;padding:22px;text-align:left">
 <p class="arabic" style="font-size:21px;color:#ffdf8a;text-align:center;line-height:2">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
@@ -95,51 +99,53 @@ canvas#fire{position:fixed;inset:0;z-index:700;pointer-events:none;display:none}
 <div style="display:flex;gap:10px;margin-top:16px"><button class="btn btn-gold" style="flex:1" onclick="openMap()">Location</button><button class="btn btn-dark" style="flex:1" onclick="shareInvite()">Share</button></div>
 </div>
 </section>
-<section class="section" style="padding-top:0"><h2 class="script">Will You Join Us?</h2><p class="sub">PLEASE CONFIRM YOUR PRESENCE</p>
+<section class="section" style="padding-top:0"><h2 class="script">Will You Join Us?</h2>
 <form onsubmit="submitRSVP(event)" style="background:#120a0c;border:1px solid rgba(212,160,23,.35);border-radius:18px;padding:22px;text-align:left;margin-top:12px">
 <label style="font-size:11px;font-weight:600;color:#c9a86a">YOUR NAME</label><input id="rName" placeholder="Full name" style="width:100%;padding:13px;border:1px solid rgba(212,160,23,.4);border-radius:10px;margin:6px 0 12px;outline:none;background:#050203;color:#fff">
 <label style="font-size:11px;font-weight:600;color:#c9a86a">GUESTS</label><select id="rCount" style="width:100%;padding:13px;border:1px solid rgba(212,160,23,.4);border-radius:10px;margin:6px 0 12px;background:#050203;color:#fff"><option>Just Me</option><option>2 Guests</option><option>With Family</option></select>
-<button class="btn btn-gold" style="width:100%" type="submit">Confirm Attendance</button>
-<p id="rsvpDone" style="display:none;color:#25D366;font-size:13px;text-align:center;margin-top:10px;font-weight:600">Thank you. Your seat is confirmed.</p></form>
+<button class="btn btn-gold" style="width:100%" type="submit">Confirm</button>
+<p id="rsvpDone" style="display:none;color:#25D366;font-size:13px;text-align:center;margin-top:10px;font-weight:600">Confirmed.</p></form>
 <div style="display:flex;gap:8px;margin-top:16px"><input id="wishText" placeholder="Write a dua..." style="flex:2;padding:12px;border-radius:10px;border:1px solid rgba(212,160,23,.4);outline:none;background:#120a0c;color:#fff"><button class="btn btn-dark" style="width:auto" onclick="addWish()">Send</button></div>
-<div id="wishList"><div style="background:#120a0c;border:1px solid rgba(212,160,23,.35);border-radius:12px;padding:14px;margin-top:12px;text-align:left"><b style="color:#e8c05c">Ammi Jaan ❤️</b><p style="font-size:13px;margin-top:4px;color:#d8c9a0">Allah bless you both always. Ameen.</p></div></div></section>
-<footer style="background:#000;padding:28px 20px;text-align:center;border-top:1px solid rgba(212,160,23,.3)"><h2 class="script" id="footerNames" style="font-size:40px;color:#e8c05c">Veer & Zara</h2><p id="footerLine" style="font-size:12px;color:#c9a86a;margin-top:8px">20 September 2026 • Gujranwala</p><p id="footerGuest" style="font-size:11px;color:#c9a86a;margin-top:6px"></p></footer>
+<div id="wishList"></div></section>
+<footer style="background:#000;padding:28px 20px;text-align:center;border-top:1px solid rgba(212,160,23,.3)"><h2 class="script" id="footerNames" style="font-size:40px;color:#e8c05c">Veer & Zara</h2><p id="footerLine" style="font-size:12px;color:#c9a86a;margin-top:8px">20 December 2026 • Gujranwala</p></footer>
 </div></div>
 <div id="imgModal" onclick="this.style.display='none'" style="position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;z-index:900;padding:20px"><img id="modalImg" style="max-width:100%;max-height:85vh;border-radius:14px"></div>
 <div id="loveLetterModal" onclick="if(event.target===this)this.style.display='none'" style="position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:950;padding:20px"><div style="background:#fff8e6;color:#000;max-width:380px;width:100%;padding:24px;border-radius:18px;text-align:center;max-height:85vh;overflow-y:auto"><h2 class="script" style="font-size:40px;color:#7a1a2e">My Zara</h2><p id="loveLetterText" style="font-size:14px;line-height:1.9;margin-top:10px;text-align:left">Zara, since the day you came into my life, every dua has your name in it. You are my peace, my happiness. Allah gave me the most precious gift - you. I want to spend my whole life with you, InshaAllah. Your Veer.</p><button onclick="document.getElementById('loveLetterModal').style.display='none'" style="background:#7a1a2e;color:#fff;border:none;padding:11px 22px;border-radius:20px;font-weight:600;margin-top:16px;cursor:pointer">Close</button></div></div>
-<div id="loveOverlay"><div><h2 class="script" style="font-size:60px;color:#ffdf8a;line-height:1">I Love You<br>Zara</h2><p style="color:#fff;margin-top:14px">You are my world.</p><p style="color:#ffdf8a;font-size:12px;margin-top:6px">- Your Veer</p><button onclick="closeLove()" style="background:#ffdf8a;color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:600;margin-top:20px;cursor:pointer">Close</button></div></div>
-<div id="adminLogin"><div style="background:#fff;color:#000;border-radius:16px;padding:24px;width:100%;max-width:340px;text-align:center"><h3 style="font-size:18px">Admin Login</h3><p style="font-size:12px;opacity:.6">Code: <b>1133</b></p><input id="adminCodeInput" type="password" placeholder="••••" style="width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;text-align:center;font-size:22px;letter-spacing:8px;outline:none;margin:14px 0"><button class="btn" id="adminBtn" style="width:100%;background:#000;color:#fff" type="button">Open Admin</button><button style="background:none;border:none;margin-top:10px;cursor:pointer;opacity:.6" onclick="closeAdminLogin()">Cancel</button><p id="adminError" style="display:none;color:red;font-size:12px;margin-top:8px">Incorrect code.</p></div></div>
+<div id="loveOverlay"><div><h2 class="script" style="font-size:60px;color:#ffdf8a;line-height:1">I Love You<br>Zara</h2><p style="color:#fff;margin-top:14px">You are my world.</p><button onclick="closeLove()" style="background:#ffdf8a;color:#000;border:none;padding:12px 24px;border-radius:20px;font-weight:600;margin-top:20px;cursor:pointer">Close</button></div></div>
+<div id="adminLogin"><div style="background:#fff;color:#000;border-radius:16px;padding:24px;width:100%;max-width:340px;text-align:center"><h3 style="font-size:18px">Admin</h3><input id="adminCodeInput" type="password" placeholder="••••" style="width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;text-align:center;font-size:22px;letter-spacing:8px;outline:none;margin:14px 0"><button class="btn" id="adminBtn" style="width:100%;background:#000;color:#fff" type="button">Open</button><button style="background:none;border:none;margin-top:10px;cursor:pointer;opacity:.6" onclick="closeAdminLogin()">Cancel</button><p id="adminError" style="display:none;color:red;font-size:12px;margin-top:8px">Incorrect.</p></div></div>
 <div id="adminPanel">
-<div style="display:flex;justify-content:space-between;align-items:center"><div><h2 style="font-size:20px">Admin Panel</h2><p style="font-size:11px;opacity:.6">All changes save automatically</p></div><button onclick="closeAdmin()" style="background:#fff;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:600;cursor:pointer">Close</button></div>
-<div style="display:flex;gap:10px;margin-top:14px"><div class="admin-card" style="flex:1;text-align:center"><b id="totalGuests" style="font-size:22px;color:#ffdf8a">0</b><br><span style="font-size:11px">Guests</span></div><div class="admin-card" style="flex:1;text-align:center"><b id="totalRSVP" style="font-size:22px;color:#25D366">0</b><br><span style="font-size:11px">RSVP</span></div><div class="admin-card" style="flex:1;text-align:center"><b style="font-size:22px">1133</b><br><span style="font-size:11px">Admin Code</span></div></div>
-<div class="admin-card"><h3>1. Card Details</h3>
-<label>Couple Names</label><input id="editNames" value="Veer & Zara">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2 style="font-size:20px">Admin</h2><button onclick="closeAdmin()" style="background:#fff;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:600;cursor:pointer">Close</button></div>
+<div style="display:flex;gap:10px;margin-top:14px"><div class="admin-card" style="flex:1;text-align:center"><b id="totalGuests" style="font-size:22px;color:#ffdf8a">0</b><br><span style="font-size:11px">Guests</span></div><div class="admin-card" style="flex:1;text-align:center"><b id="totalRSVP" style="font-size:22px;color:#25D366">0</b><br><span style="font-size:11px">RSVP</span></div></div>
+<div class="admin-card"><h3>Details</h3>
+<label>Names</label><input id="editNames" value="Veer & Zara">
 <label>Tagline</label><input id="editTagline" value="Two hearts, one dua, one forever.">
-<label>Date</label><input id="editDateText" value="20 SEPTEMBER 2026">
+<label>Date Text</label><input id="editDateText" value="20 DECEMBER 2026">
+<label>Wedding Date</label><input id="editWeddingDate" type="datetime-local" value="2026-12-20T18:00">
 <label>Venue</label><input id="editVenue" value="Gujranwala">
 <label>Story</label><textarea id="editStory" rows="3">Allah brought two hearts together. Your presence will make this day truly special.</textarea>
-<label>Programme (One per line)</label><textarea id="editSchedule" rows="3">Mehndi | 18 Sept • 7 PM
-Barat | 20 Sept • 6 PM
-Walima | 21 Sept • 7 PM</textarea>
-<label>WhatsApp Number</label><input id="editWhatsApp" value="923001234567">
-<button class="btn btn-green" style="width:100%" onclick="saveSettings()">Save Details</button></div>
-<div class="admin-card"><h3>2. Love Letter</h3><label>Veer's Letter for Zara</label><textarea id="editLoveLetter" rows="4">Zara, since the day you came into my life, every dua has your name in it. You are my peace, my happiness. Allah gave me the most precious gift - you. I want to spend my whole life with you, InshaAllah. Your Veer.</textarea><button class="btn btn-gold" style="width:100%" onclick="saveLoveLetter()">Save Letter</button></div>
-<div class="admin-card"><h3>3. Gallery</h3><label>Photo 1 URL</label><input id="editGal1" value="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80"><label>Photo 2 URL</label><input id="editGal2" value="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80"><button class="btn btn-gold" style="width:100%" onclick="saveGallery()">Save Gallery</button></div>
-<div class="admin-card"><h3>4. Music</h3><div style="margin:8px 0"><span class="song-chip active" onclick="setSong(0,this)">Soft Piano</span><span class="song-chip" onclick="setSong(1,this)">Romantic</span><span class="song-chip" onclick="setSong(2,this)">Nasheed</span></div><label>Song URL (MP3)</label><input id="editSong" placeholder="https://...mp3"><button class="btn btn-gold" style="width:100%" onclick="saveSong()">Save Song</button></div>
-<div class="admin-card"><h3>5. Add Guest</h3><input id="newName" placeholder="Name"><input id="newCode" placeholder="Code - e.g. FATIMA-707"><input id="newMsg" placeholder="Personal message"><button class="btn btn-green" style="width:100%;margin-top:8px" onclick="addNewGuest()">Add Guest</button></div>
-<div class="admin-card"><h3>6. Guest List</h3><div id="guestListAdmin"></div><button class="btn" style="background:#fff;color:#000;width:100%;margin-top:10px" onclick="copyAllCodes()">Copy All Codes</button></div>
-<div class="admin-card"><h3>7. RSVP List</h3><div id="rsvpListAdmin"><p style="font-size:12px;opacity:.6">No RSVP yet.</p></div></div>
-<div class="admin-card" style="text-align:center"><button class="btn" style="background:#ff2e4d;color:#fff" onclick="resetAll()">Reset All</button></div>
+<label>Programme</label><textarea id="editSchedule" rows="3">Mehndi | 18 Dec • 7 PM
+Barat | 20 Dec • 6 PM
+Walima | 21 Dec • 7 PM</textarea>
+<label>WhatsApp</label><input id="editWhatsApp" value="923001234567">
+<button class="btn btn-green" style="width:100%" onclick="saveSettings()">Save</button></div>
+<div class="admin-card"><h3>Love Letter</h3><textarea id="editLoveLetter" rows="4">Zara, since the day you came into my life, every dua has your name in it. You are my peace, my happiness. Allah gave me the most precious gift - you. I want to spend my whole life with you, InshaAllah. Your Veer.</textarea><button class="btn btn-gold" style="width:100%" onclick="saveLoveLetter()">Save</button></div>
+<div class="admin-card"><h3>Gallery</h3><label>Photo 1</label><input id="editGal1" value="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80"><label>Photo 2</label><input id="editGal2" value="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80"><button class="btn btn-gold" style="width:100%" onclick="saveGallery()">Save</button></div>
+<div class="admin-card"><h3>Music</h3><div style="margin:8px 0"><span class="song-chip active" onclick="setSong(0,this)">Soft Piano</span><span class="song-chip" onclick="setSong(1,this)">Romantic</span><span class="song-chip" onclick="setSong(2,this)">Nasheed</span></div><label>Song URL</label><input id="editSong" placeholder="https://...mp3"><button class="btn btn-gold" style="width:100%" onclick="saveSong()">Save</button></div>
+<div class="admin-card"><h3>Add Guest</h3><input id="newName" placeholder="Name"><input id="newCode" placeholder="Code"><input id="newMsg" placeholder="Message"><button class="btn btn-green" style="width:100%;margin-top:8px" onclick="addNewGuest()">Add</button></div>
+<div class="admin-card"><h3>Guests</h3><div id="guestListAdmin"></div><button class="btn" style="background:#fff;color:#000;width:100%;margin-top:10px" onclick="copyAllCodes()">Copy All</button></div>
+<div class="admin-card"><h3>RSVP</h3><div id="rsvpListAdmin"><p style="font-size:12px;opacity:.6">No RSVP yet.</p></div></div>
+<div class="admin-card" style="text-align:center"><button class="btn" style="background:#ff2e4d;color:#fff" onclick="resetAll()">Reset</button></div>
 </div>
 <script>
 var ADMIN_CODE="1133";
 var SONGS=["https://cdn.pixabay.com/audio/2022/10/25/audio_1e3a8b2a8a.mp3","https://cdn.pixabay.com/audio/2023/09/19/audio_8c9e0b8b9a.mp3","https://cdn.pixabay.com/audio/2022/03/10/audio_2c8a3b5e5d.mp3"];
-var DEFAULT_SETTINGS={names:"Veer & Zara",tagline:"Two hearts, one dua, one forever.",dateText:"20 SEPTEMBER 2026",venue:"Gujranwala",story:"Allah brought two hearts together. Your presence will make this day truly special.",schedule:"Mehndi | 18 Sept • 7 PM\nBarat | 20 Sept • 6 PM\nWalima | 21 Sept • 7 PM",whatsapp:"923001234567",gal1:"https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",gal2:"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80",song:SONGS[0],loveLetter:"Zara, since the day you came into my life, every dua has your name in it. You are my peace, my happiness. Allah gave me the most precious gift - you. I want to spend my whole life with you, InshaAllah. Your Veer."};
+var DEFAULT_SETTINGS={names:"Veer & Zara",tagline:"Two hearts, one dua, one forever.",dateText:"20 DECEMBER 2026",weddingDate:"2026-12-20T18:00",venue:"Gujranwala",story:"Allah brought two hearts together. Your presence will make this day truly special.",schedule:"Mehndi | 18 Dec • 7 PM\nBarat | 20 Dec • 6 PM\nWalima | 21 Dec • 7 PM",whatsapp:"923001234567",gal1:"https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",gal2:"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80",song:SONGS[0],loveLetter:"Zara, since the day you came into my life, every dua has your name in it. You are my peace, my happiness. Allah gave me the most precious gift - you. I want to spend my whole life with you, InshaAllah. Your Veer."};
 function safeParse(k,def){try{var v=localStorage.getItem(k);return v?JSON.parse(v):def;}catch(e){return def;}}
-var SETTINGS=safeParse('vz_settings_v2',null)||JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
-var GUESTS=safeParse('vz_guests_v2',null)||{"AYESHA-101":{name:"Ayesha Khan",msg:"Ayesha, your presence will make this day complete."},"ALI-202":{name:"Ali Raza",msg:"Ali, you are one of my closest friends. See you at the Barat."},"FAMILY-303":{name:"Khan Family",msg:"Dear Family, this day is blessed because of your duas."},"GUEST-999":{name:"Dear Guest",msg:"You are warmly invited."}};
+var SETTINGS=safeParse('vz_settings_v3',null)||JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+if(!SETTINGS.weddingDate) SETTINGS.weddingDate="2026-12-20T18:00";
+var GUESTS=safeParse('vz_guests_v2',null)||{"AYESHA-101":{name:"Ayesha Khan",msg:"Ayesha, your presence will make this day complete."},"ALI-202":{name:"Ali Raza",msg:"Ali, you are one of my closest friends. See you at the Barat."},"FAMILY-303":{name:"Khan Family",msg:"Dear Family, this day is blessed because of your duas."},"GUEST-999":{name:"Dear Guest",msg:"You are warmly invited."},"ZAIN-101":{name:"Zain",msg:"Zain, you are warmly invited."}};
 var RSVPS=safeParse('vz_rsvp_v2',[]);
-function saveAll(){try{localStorage.setItem('vz_settings_v2',JSON.stringify(SETTINGS));localStorage.setItem('vz_guests_v2',JSON.stringify(GUESTS));localStorage.setItem('vz_rsvp_v2',JSON.stringify(RSVPS));}catch(e){}}
+function saveAll(){try{localStorage.setItem('vz_settings_v3',JSON.stringify(SETTINGS));localStorage.setItem('vz_guests_v2',JSON.stringify(GUESTS));localStorage.setItem('vz_rsvp_v2',JSON.stringify(RSVPS));}catch(e){}}
 function el(id){return document.getElementById(id);}
 function applySettings(){
 if(!el('gateNames'))return;
@@ -147,8 +153,8 @@ el('gateNames').textContent=SETTINGS.names;el('gateNames2').textContent=SETTINGS
 el('heroNames').textContent=SETTINGS.names;el('heroTagline').textContent=SETTINGS.tagline;el('storyText').textContent=SETTINGS.story;el('footerNames').textContent=SETTINGS.names;el('footerLine').textContent=SETTINGS.dateText+" • "+SETTINGS.venue;
 el('gal1').src=SETTINGS.gal1;el('gal2').src=SETTINGS.gal2;el('song').src=SETTINGS.song;el('loveLetterText').textContent=SETTINGS.loveLetter||DEFAULT_SETTINGS.loveLetter;
 var s=(SETTINGS.schedule||'').split('\n').map(function(l){var p=l.split('|');return '<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px"><span>'+(p[0]||'')+'</span><b style="color:#e8c05c">'+(p[1]||'')+'</b></div>'}).join('');el('scheduleList').innerHTML=s;
-if(el('editNames')){el('editNames').value=SETTINGS.names;el('editTagline').value=SETTINGS.tagline;el('editDateText').value=SETTINGS.dateText;el('editVenue').value=SETTINGS.venue;el('editStory').value=SETTINGS.story;el('editSchedule').value=SETTINGS.schedule;el('editWhatsApp').value=SETTINGS.whatsapp;el('editGal1').value=SETTINGS.gal1;el('editGal2').value=SETTINGS.gal2;el('editSong').value=SETTINGS.song;el('editLoveLetter').value=SETTINGS.loveLetter;}
-if(new Date()>=new Date('2026-09-21T00:00:00')){var b=el('shadiMubarakBanner');if(b)b.style.display='block';}
+if(el('editNames')){el('editNames').value=SETTINGS.names;el('editTagline').value=SETTINGS.tagline;el('editDateText').value=SETTINGS.dateText;el('editWeddingDate').value=SETTINGS.weddingDate;el('editVenue').value=SETTINGS.venue;el('editStory').value=SETTINGS.story;el('editSchedule').value=SETTINGS.schedule;el('editWhatsApp').value=SETTINGS.whatsapp;el('editGal1').value=SETTINGS.gal1;el('editGal2').value=SETTINGS.gal2;el('editSong').value=SETTINGS.song;el('editLoveLetter').value=SETTINGS.loveLetter;}
+var banner=el('shadiMubarakBanner');if(banner){if(Date.now()>=new Date(SETTINGS.weddingDate).getTime()+86400000){banner.style.display='block';}else{banner.style.display='none';}}
 }
 applySettings();
 var opened=false;
@@ -168,38 +174,45 @@ setTimeout(function(){var gate=el('gate');if(gate)gate.style.display='none';},23
 function checkCode(){
 var code=el('guestCode').value.trim().toUpperCase();var g=GUESTS[code];
 if(!g){el('codeError').style.display='block';return;}
-el('codeError').style.display='none';el('guestNameShow').textContent=g.name;el('guestMsg').textContent=g.msg;el('rName').value=g.name;el('footerGuest').textContent="This invitation is for "+g.name;
+el('codeError').style.display='none';el('guestNameShow').textContent=g.name;el('guestMsg').textContent=g.msg;el('rName').value=g.name;
 el('codeScreen').style.display='none';el('personalCard').style.display='block';updateCountdown();try{startFireworks();}catch(e){}window.scrollTo(0,0);
 }
-function openAdminLogin(){el('adminLogin').style.display='flex';el('adminCodeInput').value='';setTimeout(function(){el('adminCodeInput').focus()},100);}
+function openAdminLogin(){el('adminLogin').style.display='flex';el('adminCodeInput').value='';}
 function closeAdminLogin(){el('adminLogin').style.display='none';}
 function checkAdmin(){var c=el('adminCodeInput').value.trim();if(c===ADMIN_CODE){closeAdminLogin();el('adminPanel').style.display='block';renderAdmin();applySettings();}else{el('adminError').style.display='block';}}
 function closeAdmin(){el('adminPanel').style.display='none';}
-function saveSettings(){SETTINGS.names=el('editNames').value.trim()||SETTINGS.names;SETTINGS.tagline=el('editTagline').value;SETTINGS.dateText=el('editDateText').value;SETTINGS.venue=el('editVenue').value;SETTINGS.story=el('editStory').value;SETTINGS.schedule=el('editSchedule').value;SETTINGS.whatsapp=el('editWhatsApp').value;saveAll();applySettings();alert('✅ Saved! Page refresh karke dekho, change aa gaya hoga.');}
-function saveLoveLetter(){SETTINGS.loveLetter=el('editLoveLetter').value;saveAll();applySettings();alert('✅ Letter saved');}
-function saveGallery(){SETTINGS.gal1=el('editGal1').value;SETTINGS.gal2=el('editGal2').value;saveAll();applySettings();alert('✅ Gallery saved');}
-function setSong(i,elm){SETTINGS.song=SONGS[i];var chips=document.querySelectorAll('.song-chip');for(var j=0;j<chips.length;j++)chips[j].classList.remove('active');elm.classList.add('active');el('editSong').value=SONGS[i];saveAll();applySettings();var a=el('song');a.src=SETTINGS.song;a.play().catch(function(){});alert('✅ Song changed');}
-function saveSong(){var v=el('editSong').value.trim();if(!v)return alert('Enter song URL');SETTINGS.song=v;saveAll();applySettings();alert('✅ Song saved');}
-function addNewGuest(){var n=el('newName').value.trim();var c=el('newCode').value.trim().toUpperCase();var m=el('newMsg').value.trim();if(!n||!c)return alert('Name and code required');if(GUESTS[c])return alert('Code already exists');GUESTS[c]={name:n,msg:m||n+", you are warmly invited."};saveAll();el('newName').value='';el('newCode').value='';el('newMsg').value='';renderAdmin();alert('✅ Guest added: '+c);}
-function deleteGuest(code){if(confirm('Delete this guest?')){delete GUESTS[code];saveAll();renderAdmin();}}
+function saveSettings(){SETTINGS.names=el('editNames').value.trim()||SETTINGS.names;SETTINGS.tagline=el('editTagline').value;SETTINGS.dateText=el('editDateText').value;SETTINGS.weddingDate=el('editWeddingDate').value||SETTINGS.weddingDate;SETTINGS.venue=el('editVenue').value;SETTINGS.story=el('editStory').value;SETTINGS.schedule=el('editSchedule').value;SETTINGS.whatsapp=el('editWhatsApp').value;saveAll();applySettings();updateCountdown();alert('Saved');}
+function saveLoveLetter(){SETTINGS.loveLetter=el('editLoveLetter').value;saveAll();applySettings();alert('Saved');}
+function saveGallery(){SETTINGS.gal1=el('editGal1').value;SETTINGS.gal2=el('editGal2').value;saveAll();applySettings();alert('Saved');}
+function setSong(i,elm){SETTINGS.song=SONGS[i];var chips=document.querySelectorAll('.song-chip');for(var j=0;j<chips.length;j++)chips[j].classList.remove('active');elm.classList.add('active');el('editSong').value=SONGS[i];saveAll();applySettings();var a=el('song');a.src=SETTINGS.song;a.play().catch(function(){});}
+function saveSong(){var v=el('editSong').value.trim();if(!v)return alert('Enter song URL');SETTINGS.song=v;saveAll();applySettings();alert('Saved');}
+function addNewGuest(){var n=el('newName').value.trim();var c=el('newCode').value.trim().toUpperCase();var m=el('newMsg').value.trim();if(!n||!c)return alert('Name and code required');if(GUESTS[c])return alert('Code already exists');GUESTS[c]={name:n,msg:m||n+", you are warmly invited."};saveAll();el('newName').value='';el('newCode').value='';el('newMsg').value='';renderAdmin();alert('Added: '+c);}
+function deleteGuest(code){if(confirm('Delete?')){delete GUESTS[code];saveAll();renderAdmin();}}
 function renderAdmin(){el('totalGuests').textContent=Object.keys(GUESTS).length;el('totalRSVP').textContent=RSVPS.length;var h='';for(var code in GUESTS){h+='<div class="guest-row"><div><b>'+GUESTS[code].name+'</b><br><span style="color:#b78a00;font-weight:600">'+code+'</span></div><div><button onclick="copyCode(\''+code+'\')" style="background:#ffdf8a;border:none;padding:6px 10px;border-radius:8px;font-weight:600;cursor:pointer">Copy</button> <button onclick="deleteGuest(\''+code+'\')" style="background:#ff2e4d;color:#fff;border:none;padding:6px 10px;border-radius:8px;cursor:pointer">Delete</button></div></div>';}el('guestListAdmin').innerHTML=h;if(RSVPS.length>0){var r='';RSVPS.forEach(function(x){r+='<div class="guest-row"><div><b>'+x.name+'</b><br><span style="opacity:.6">'+x.count+'</span></div><span>Confirmed</span></div>'});el('rsvpListAdmin').innerHTML=r;}}
-function copyCode(code){try{navigator.clipboard.writeText("Assalam-o-Alaikum! Your VIP Code is: "+code+" - Link: "+location.href);}catch(e){}alert('Copied: '+code);}
-function copyAllCodes(){var t='Veer & Zara - Guest Codes:\n';for(var c in GUESTS)t+=GUESTS[c].name+' = '+c+'\n';try{navigator.clipboard.writeText(t);}catch(e){}alert('Copied all codes');}
-function resetAll(){if(confirm('Reset all data?')){localStorage.removeItem('vz_settings_v2');localStorage.removeItem('vz_guests_v2');localStorage.removeItem('vz_rsvp_v2');localStorage.removeItem('vz_settings');localStorage.removeItem('vz_guests');localStorage.removeItem('vz_rsvp');location.reload();}}
-function askCode(){window.open("https://wa.me/"+SETTINGS.whatsapp+"?text="+encodeURIComponent("Assalam-o-Alaikum! I need my invitation code."),"_blank")}
+function copyCode(code){try{navigator.clipboard.writeText("Your Code: "+code+" - Link: "+location.href);}catch(e){}alert('Copied: '+code);}
+function copyAllCodes(){var t='Veer & Zara - Codes:\n';for(var c in GUESTS)t+=GUESTS[c].name+' = '+c+'\n';try{navigator.clipboard.writeText(t);}catch(e){}alert('Copied');}
+function resetAll(){if(confirm('Reset?')){localStorage.clear();location.reload();}}
 function openMap(){window.open('https://maps.google.com/?q='+encodeURIComponent(SETTINGS.venue),'_blank')}
 function shareInvite(){if(navigator.share)navigator.share({title:SETTINGS.names+' Wedding',text:'You are invited! '+SETTINGS.dateText,url:location.href});else alert('Copy link: '+location.href)}
-function playAyat(e){if(e)e.stopPropagation();var a=el('ayatAudio');var btn=el('ayatBtn');if(a.paused){a.play().catch(function(){alert('Ayat loading... check internet')});if(btn)btn.textContent='⏸️ Ayat Band Karo';}else{a.pause();if(btn)btn.textContent='🔊 Ayat Suno';}}
+function playAyat(e){if(e)e.stopPropagation();var a=el('ayatAudio');var btn=el('ayatBtn');if(a.paused){a.play().catch(function(){});if(btn)btn.textContent='⏸️ Ayat Band Karo';}else{a.pause();if(btn)btn.textContent='🔊 Ayat Suno';}}
 function openLoveLetter(){el('loveLetterModal').style.display='flex';}
 function secretLove(){el('loveOverlay').style.display='flex';try{startFireworks();}catch(e){}try{playMusic();}catch(e){}}
 function closeLove(){el('loveOverlay').style.display='none';}
-var target=new Date('2026-09-20T18:00:00').getTime();
-function updateCountdown(){var dEl=el('d');if(!dEl)return;var diff=Math.max(0,target-Date.now());dEl.textContent=String(Math.floor(diff/86400000)).padStart(2,'0');el('h').textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');el('m').textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');el('s').textContent=String(Math.floor(diff%60000/1000)).padStart(2,'0');}
-setInterval(updateCountdown,1000);updateCountdown();
+function getTargetTime(){try{return new Date(SETTINGS.weddingDate||'2026-12-20T18:00').getTime();}catch(e){return new Date('2026-12-20T18:00').getTime();}}
+function updateCountdown(){
+var diff=getTargetTime()-Date.now();if(diff<0)diff=0;
+var dStr=String(Math.floor(diff/86400000)).padStart(2,'0');
+var hStr=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
+var mStr=String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+var sStr=String(Math.floor(diff%60000/1000)).padStart(2,'0');
+if(el('d2'))el('d2').textContent=dStr;if(el('h2'))el('h2').textContent=hStr;if(el('m2'))el('m2').textContent=mStr;if(el('s2'))el('s2').textContent=sStr;
+if(el('d'))el('d').textContent=dStr;if(el('h'))el('h').textContent=hStr;if(el('m'))el('m').textContent=mStr;if(el('s'))el('s').textContent=sStr;
+}
+updateCountdown();setInterval(updateCountdown,1000);
 var playing=false;
 function playMusic(){var a=el('song');a.volume=.5;playing=true;el('musicBtn').textContent='🔊';a.play().catch(function(){playing=false;el('musicBtn').textContent='🎵'})}
 function toggleMusic(){var a=el('song');if(playing){a.pause();playing=false;el('musicBtn').textContent='🎵'}else{playMusic()}}
-function submitRSVP(e){e.preventDefault();var n=el('rName').value;var c=el('rCount').value;if(!n)return alert('Please enter your name');RSVPS.push({name:n,count:c,time:new Date().toLocaleString()});saveAll();el('rsvpDone').style.display='block';}
+function submitRSVP(e){e.preventDefault();var n=el('rName').value;var c=el('rCount').value;if(!n)return alert('Enter name');RSVPS.push({name:n,count:c,time:new Date().toLocaleString()});saveAll();el('rsvpDone').style.display='block';}
 function addWish(){var t=el('wishText').value;if(!t)return;var n=el('rName').value||'Guest';var d=document.createElement('div');d.style.cssText='background:#120a0c;border:1px solid rgba(212,160,23,.35);border-radius:12px;padding:14px;margin-top:12px;text-align:left';d.innerHTML='<b style="color:#e8c05c">'+n+'</b><p style="font-size:13px;margin-top:4px;color:#d8c9a0">'+t+'</p>';el('wishList').prepend(d);el('wishText').value=''}
 function viewImg(src){el('modalImg').src=src;el('imgModal').style.display='flex'}
 var fwRunning=false;
